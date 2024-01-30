@@ -13,7 +13,17 @@ export default function MenuButton() {
         displayMenu.value = !displayMenu.value;
       }}
     >
-      <Icon id="Bars3" size={20} strokeWidth={0.01} />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="17"
+        height="17"
+        viewBox="0 0 17 17"
+        fill="currentColor"
+      >
+        <g></g>
+        <path d="M17 2v1h-17v-1h17zM3 7h14v-1h-14v1zM0 11h17v-1h-17v1zM7 15h10v-1h-10v1z">
+        </path>
+      </svg>
     </Button>
   );
 }

@@ -1,4 +1,3 @@
-import type { Props as SearchbarProps } from "$store/components/search/Searchbar.tsx";
 import Drawers from "$store/islands/Header/Drawers.tsx";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
@@ -13,8 +12,13 @@ export interface Logo {
   width?: number;
   height?: number;
 }
+export interface secondLogo {
+  src: ImageWidget;
+  alt: string;
+  width?: number;
+  height?: number;
+}
 export interface Buttons {
-  hideSearchButton?: boolean;
   hideAccountButton?: boolean;
   hideWishlistButton?: boolean;
   hideCartButton?: boolean;
@@ -22,9 +26,6 @@ export interface Buttons {
 
 export interface Props {
   alerts?: string[];
-
-  /** @title Search Bar */
-  searchbar?: Omit<SearchbarProps, "platform">;
 
   /**
    * @title Navigation items
@@ -37,12 +38,17 @@ export interface Props {
 
   logoPosition?: "left" | "center";
 
+  // 2logo
+  /** @title Logo */
+  secondLogo?: secondLogo;
+  secondLogoPosition?: "left" | "center";
+  // fim 2logo
+
   buttons?: Buttons;
 }
 
 function Header({
   alerts,
-  searchbar,
   navItems = [
     {
       "@type": "SiteNavigationElement",
@@ -73,6 +79,14 @@ function Header({
     alt: "Logo",
   },
   logoPosition = "center",
+  secondLogo = {
+    src:
+      "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2291/986b61d4-3847-4867-93c8-b550cb459cc7",
+    width: 100,
+    height: 16,
+    alt: "Logo",
+  },
+  secondLogoPosition = "center",
   buttons,
 }: Props) {
   const platform = usePlatform();
@@ -80,19 +94,19 @@ function Header({
 
   return (
     <>
-      <header style={{ height: headerHeight }}>
+      <header>
         <Drawers
           menu={{ items }}
-          searchbar={searchbar}
           platform={platform}
         >
-          <div class="bg-base-100 fixed w-full z-50">
+          <div class="bg-[#FFFFFF01] fixed w-full z-50 text-[#fff] top-0 hover:bg-[#ffffff] hover:text-[#000]">
             {alerts && alerts.length > 0 && <Alert alerts={alerts} />}
             <Navbar
               items={items}
-              searchbar={searchbar && { ...searchbar, platform }}
               logo={logo}
               logoPosition={logoPosition}
+              secondLogo={secondLogo}
+              secondLogoPosition={secondLogoPosition}
               buttons={buttons}
             />
           </div>
