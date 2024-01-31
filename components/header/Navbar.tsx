@@ -30,7 +30,7 @@ function Navbar(
       {/* Mobile Version */}
       <div
         style={{ height: navbarHeight }}
-        class="lg:hidden grid grid-cols-3 justify-between items-center border-b border-base-200 w-full px-6 pb-6 gap-2"
+        class="lg:hidden grid grid-cols-3 justify-between items-center border-b border-base-200 w-full px-6 pb-6 gap-2 group border-none"
       >
         <MenuButton />
         {logo && (
@@ -51,7 +51,7 @@ function Navbar(
         {secondLogo && (
           <a
             href="/"
-            class="flex-grow inline-flex items-center justify-center"
+            class="flex-grow items-center justify-center hidden "
             style={{ minHeight: navbarHeight }}
             aria-label="Store logo"
           >
@@ -66,7 +66,7 @@ function Navbar(
       </div>
 
       {/* Desktop Version */}
-      <div class="hidden lg:grid lg:grid-cols-3 items-center border-b border-base-200 w-full px-6 group">
+      <div class="hidden lg:grid lg:grid-cols-3 items-center w-full px-6 ">
         <div
           class={`flex gap-6 col-span-1 ${
             logoPosition === "left" ? "justify-center" : "justify-start"
@@ -75,7 +75,7 @@ function Navbar(
           {items.map((item) => <NavItem item={item} />)}
         </div>
         <div
-          class={`flex group-hover:hidden ${
+          class={`flex  ${
             logoPosition === "left"
               ? "justify-start -order-1"
               : "justify-center"
@@ -98,7 +98,7 @@ function Navbar(
         </div>
         {/* secondlogo */}
         <div
-          class={`hidden group-hover:flex ${
+          class={`hidden ${
             secondLogoPosition === "left"
               ? "justify-start -order-1"
               : "justify-center"
