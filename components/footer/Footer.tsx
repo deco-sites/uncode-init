@@ -11,7 +11,7 @@ import Social from "$store/components/footer/Social.tsx";
 import Newsletter from "$store/islands/Newsletter.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
 import PoweredByDeco from "apps/website/components/PoweredByDeco.tsx";
-
+import Icon, { AvailableIcons } from "$store/components/ui/Icon.tsx";
 export type Item = {
   label: string;
   href: string;
@@ -214,31 +214,36 @@ function Footer({
 
   return (
     <footer
-      class={`w-full flex flex-col pt-10 pb-2 md:pb-10 gap-10 ${
+      class={`w-full flex flex-col pt-10 pb-2 md:pb-10 gap-10 bg-[#F5F7F9] ${
         ColorClasses(layout)
       }`}
     >
-      <div class="lg:container mx-6 lg:mx-auto">
+      <div class="section-content lg:mx-auto w-full">
         {(!layout?.variation || layout?.variation == "Variation 1") && (
           <div class="flex flex-col gap-10">
             <div class="flex flex-col md:flex-col md:justify-between md:flex-wrap lg:flex-nowrap gap-8 lg:gap-12">
               {_logo}
-              {_sectionLinks}
-              {_newsletter}
+
+              {/* {_newsletter} */}
             </div>
             <Divider />
             <div class="flex flex-col md:flex-row gap-10 md:gap-14 md:items-end">
-              {_payments}
-              {_social}
+              {/* {_payments} */}
+              {_links}
+
               <div class="flex flex-col lg:flex-row gap-10 lg:gap-14 lg:items-end">
-                {_apps}
-                {_region}
+                {
+                  /* {_apps}
+                {_region} */
+                }
               </div>
             </div>
             <Divider />
             <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10">
+              {_social}
               <PoweredByDeco />
-              {_links}
+
+              {_sectionLinks}
             </div>
           </div>
         )}

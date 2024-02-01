@@ -20,6 +20,34 @@
     margin: 0;
   }
 
+  /* header scroll */
+  header.scroll div.top-0{
+    background: #fff !important;
+    color: #1a1a1a !important;
+  }
+  header.scroll .hidden.-order-1{
+    display: flex !important;
+  }
+  header.scroll .flex.-order-1{
+    display: none !important;
+  }
+
+  .menu-sub:hover .subitem{
+    height: auto;
+    transition: all 1s;
+  }
+  .menu-sub:hover .subitem ul{
+    height: auto;
+    transition: all 1s;
+  }
+  .section-content{
+    max-width: 1296px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .collapse-content .collapse-title{
+    font-size: 22px !important;
+  }
   /* Disable scroll once drawer/modal is openned */
   body:has(.drawer-toggle:checked),
   body:has(.modal-toggle:checked) {

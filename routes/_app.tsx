@@ -39,6 +39,25 @@ export default defineApp(async (_req, ctx) => {
         type="module"
         dangerouslySetInnerHTML={{ __html: `(${sw})();` }}
       />
+      {/* Tag <script> dentro do componente */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+              window.addEventListener('scroll', function() {
+                var header = document.querySelector('header');
+                var homeSection = document.querySelector('.home-section'); // Seletor da seção inicial
+            
+                // Verifica se estamos na página inicial e se a página foi rolada para baixo
+                if ( window.scrollY > 0) {
+                    header.classList.add('scroll'); // Adiciona a classe 'scroll' ao header
+                } else {
+                    header.classList.remove('scroll'); // Remove a classe 'scroll' caso contrário
+                }
+              });
+            `,
+        }}
+      >
+      </script>
     </>
   );
 });

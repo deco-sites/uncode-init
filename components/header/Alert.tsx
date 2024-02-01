@@ -6,7 +6,7 @@ export interface Props {
   alerts?: string[];
   /**
    * @title Autoplay interval
-   * @description time (in seconds) to start the carousel autoplay
+   * @description time (in seconds) to start the carousel+9 autoplay
    */
   interval?: number;
 }

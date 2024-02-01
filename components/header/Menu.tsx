@@ -6,26 +6,32 @@ export interface Props {
 }
 
 function MenuItem({ item }: { item: SiteNavigationElement }) {
+  const hasChildren = item.children && item.children.length > 0;
+
   return (
-    <div class="collapse collapse-plus">
-      <input type="checkbox" />
-      <div class="collapse-title first:border-t-2 text-[50px] not:hover:opacity-[0.5]">
+    <div className={`${hasChildren ? "collapse collapse-plus" : ""}`}>
+      {hasChildren && <input type="checkbox" />}
+
+      <div
+        className={`collapse-title first:border-t-2 text-[50px]  ${
+          hasChildren ? "text-[50px]" : "text-[22px]"
+        }`}
+      >
         {item.name}
       </div>
-      <div class="collapse-content">
-        <ul>
-          {
-            /* <li>
-            <a class="underline text-sm" href={item.url}>Ver todos</a>
-          </li> */
-          }
-          {item.children?.map((node) => (
-            <li class="text-[22px]">
-              <MenuItem item={node} />
-            </li>
-          ))}
-        </ul>
-      </div>
+      {hasChildren && (
+        <div className="collapse-content text-[22px !important]">
+          <ul>
+            {item.children?.map((node, index) => (
+              <a href={node.url}>
+                <li key={index}>
+                  <MenuItem item={node} />
+                </li>
+              </a>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
@@ -33,15 +39,17 @@ function MenuItem({ item }: { item: SiteNavigationElement }) {
 function Menu({ items }: Props) {
   return (
     <div class="flex  max-md:flex-col flex-row h-full border-none relative top-[-3px] max-md:overflow-auto">
-      <ul class="pl-4 flex-grow flex flex-col divide-y divide-base-200 pt-[140px] order-2 relative top-[-12%] w-1/3 max-md:w-full">
+      <ul class="pl-4 flex-grow flex flex-col divide-y divide-base-200 pt-[140px] order-2 relative w-1/3 max-md:w-full">
         {items.map((item) => (
-          <li>
-            <MenuItem item={item} />
-          </li>
+          <a href={item.url}>
+            <li>
+              <MenuItem item={item} />
+            </li>
+          </a>
         ))}
       </ul>
-      <div class="order-1 w-1/3 max-md:hidden relavite">
-        <h2 class="text-[10vw] font-bold uppercase rotate-[270deg] opacity-5 items-end flex origin-[100%_42%] absolute">
+      <div class="order-1 w-[23%] max-md:hidden relavite">
+        <h2 class="text-[10vw] font-bold uppercase rotate-[270deg] opacity-5 items-end flex origin-[90%_98%] absolute">
           MENU
         </h2>
       </div>
