@@ -30,7 +30,7 @@ function Navbar(
       {/* Mobile Version */}
       <div
         style={{ height: navbarHeight }}
-        class="lg:hidden grid grid-cols-3 justify-between items-center border-b border-base-200 w-full px-6 pb-6 gap-2 group border-none"
+        class="lg:hidden grid grid-cols-3 justify-between items-center border-b border-base-200 w-full px-6 pb-6 gap-2 group border-none relative"
       >
         <MenuButton />
         {logo && (
@@ -66,7 +66,7 @@ function Navbar(
       </div>
 
       {/* Desktop Version */}
-      <div class="hidden lg:grid lg:grid-cols-3 items-center w-full px-6 section-content">
+      <div class="hidden lg:grid lg:grid-cols-3 items-center w-full px-6 section-content relative">
         <div
           class={`flex gap-6 col-span-1 ${
             logoPosition === "left" ? "justify-center" : "justify-start"
@@ -120,7 +120,7 @@ function Navbar(
           )}
         </div>
 
-        <div class="flex-none flex items-center justify-end gap-6 col-span-1">
+        <div class="flex-none flex items-center justify-end gap-6 col-span-1 w-[fit-content] absolute right-0 h-full min-w-[90px] border-l border-[#FFFFFF33]">
           <MenuButton />
         </div>
       </div>

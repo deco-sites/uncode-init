@@ -1,5 +1,5 @@
 import Icon, { AvailableIcons } from "$store/components/ui/Icon.tsx";
-
+import Card from "deco-sites/uncode-init/components/daisy/Card.tsx";
 /**
  * @titleBy title
  */
@@ -10,6 +10,7 @@ export interface Card {
    */
   title: string;
   text: string;
+  href: string;
 }
 
 export interface Props {
@@ -17,23 +18,78 @@ export interface Props {
   cards: Card[];
 }
 
-function FeatureCard({ icon, title, text }: Card) {
+function FeatureCard({ icon, title, text, href }: Card) {
   return (
-    <div class="feature-card group group-hover:-translate-y-3 w-[23%]">
+    <div class="feature-card px-[30px] group group-hover:-translate-y-3 w-[23%] bg-[#FFFFFF] items-start h-auto relative">
       {icon && (
-        <div class="p-6 rounded-full bg-white text-[#1A1A1A]">
+        <div class="py-6 px-0 rounded-full bg-white text-[#1A1A1A]">
           <Icon id={icon} size={48} />
         </div>
       )}
       <div class="space-y-4 text-center">
         {title && (
           <div
-            class="text-2xl font-semibold leading-[110%]"
+            class="text-2xl font-[500] leading-[110%] text-[#1a1a1a] text-left"
             dangerouslySetInnerHTML={{ __html: title }}
           />
         )}
-        <p class="leading-[120%]" dangerouslySetInnerHTML={{ __html: text }} />
+        <p
+          class="leading-[120%] text-[#777777] text-[15px] text-left"
+          dangerouslySetInnerHTML={{ __html: text }}
+        />
       </div>
+      <a href={href} class="arrow-link bg-[#F5F7F9]">
+        <div class="arrow w-[90px] h-[90px] transition-all duration-500 rounded-[0 0 0 30px] flex justify-center">
+          <i class="rounded-full w-[70px] h-[70px] flex justify-center items-center icon-arrow">
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 17 17"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_8_4616)">
+                <path
+                  d="M16.0062 1.56836V10.0418H15.065V3.17401L5.35486 12.8653L4.68945 12.1989L14.3977 2.50954H7.51204V1.56836H16.0062Z"
+                  fill="currentColor"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_8_4616">
+                  <rect
+                    width="16"
+                    height="16"
+                    fill="white"
+                    transform="translate(0.947266 0.629883)"
+                  />
+                </clipPath>
+              </defs>
+            </svg>
+          </i>
+        </div>
+        <div class="left-top max-md:hidden">
+          <svg
+            viewBox="0 0 11 11"
+            fill="#F5F7F9"
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-[42px] h-[25px]"
+          >
+            <path d="M11 1.54972e-06L0 0L2.38419e-07 11C1.65973e-07 4.92487 4.92487 1.62217e-06 11 1.54972e-06Z">
+            </path>
+          </svg>
+        </div>
+        <div class="right-bottom max-md:hidden">
+          <svg
+            viewBox="0 0 11 11"
+            fill="#F5F7F9"
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-[35px] h-[34px]"
+          >
+            <path d="M11 1.54972e-06L0 0L2.38419e-07 11C1.65973e-07 4.92487 4.92487 1.62217e-06 11 1.54972e-06Z">
+            </path>
+          </svg>
+        </div>
+      </a>
     </div>
   );
 }
@@ -86,7 +142,7 @@ export default function Features({ title, cards }: Props) {
             </a>
           </div>
         </div>
-        <div class="features">
+        <div class="features max-md:flex-col">
           {cards?.map((card) => <FeatureCard {...card} />)}
         </div>
       </div>

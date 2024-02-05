@@ -21,6 +21,9 @@
   }
 
   /* header scroll */
+  header.scroll .flex-none.flex.items-center.justify-end.gap-6.col-span-1.w-\[fit-content\].absolute.right-0.h-full.min-w-\[90px\].border-l.border-\[\#FFFFFF33\]{
+    border-color: #1a1a1a50;
+  }
   header.scroll div.top-0{
     background: #fff !important;
     color: #1a1a1a !important;
@@ -31,14 +34,29 @@
   header.scroll .flex.-order-1{
     display: none !important;
   }
-
+  header.scroll a.flex-grow.items-center.justify-center.hidden{
+    display: flex !important;
+  }
+  header.scroll a.flex-grow.inline-flex.items-center.justify-center{
+    display: none !important;
+  }
   .menu-sub:hover .subitem{
     height: auto;
-    transition: all 1s;
+    opacity: 1;
+    transition: 1s ease-out;
+    animation: fade-in 0.3s;
+  }
+  .menu-sub:not(:hover) .subitem{
+    height: auto;
+    opacity: 1;
+    transition: 1s ease-out;
+    animation: fade-out 0.3s;
   }
   .menu-sub:hover .subitem ul{
     height: auto;
-    transition: all 1s;
+    opacity: 1;
+    /* animation: fade-in 1s; */
+    /* transition: 1s ease-out; */
   }
   .section-content{
     max-width: 1296px;
@@ -55,7 +73,84 @@
     height: 100vh;
   }
 }
+.feature-card .arrow-link{
+  transition: all 0.4s;
+  border-radius: 0 0 0 30px;
+}
+.feature-card:hover .arrow-link{
+  top: 0;
+  right: 0;
+  opacity: 1;
+  transition: all 0.4s;
+  background: #F5F7F9;
+} 
+.arrow-link{
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  opacity: 0;
+  background: transparent;
+}
+.left-top{
+  position: absolute;
+  top: 0;
+  left: -2rem;
+  transform: rotate(90deg);
+  line-height: 1;
+  
+}
+.right-bottom{
+  position: absolute;
+  bottom: -2.1rem;
+  right: -1px;
+  transform: rotate(90deg);
+  line-height: 1;
+}
 
+.arrow{
+  border-radius: 0 0 0 30px;
+  transition: all 0.4s;
+  
+}
+.icon-arrow{
+  border: 1px solid;
+}
+.icon-arrow:hover{
+  background: #FC6001;
+  transition: all 0.7s;
+
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    height: 0;
+    transform: translateY(-10%);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(-5%);
+  }
+  100% {
+    opacity: 1;
+    height: fit-content;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(-5%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+}
 @layer components {
   .features {
     @apply flex items-center justify-center gap-6 flex-wrap;

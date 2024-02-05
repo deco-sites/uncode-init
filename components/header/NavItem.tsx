@@ -7,7 +7,7 @@ function NavItem({ item }: { item: SiteNavigationElement }) {
   const image = item?.image?.[0];
 
   return (
-    <li class="group flex items-center relative hover:underline menu-sub">
+    <li class="group flex items-center relative hover:underline menu-sub transition-all duration-1000">
       <a href={url} class="py-6">
         <span class="text-xs font-thin">
           {name}
@@ -17,7 +17,7 @@ function NavItem({ item }: { item: SiteNavigationElement }) {
       {children && children.length > 0 &&
         (
           <div
-            class="absolute hidden transition-all duration-1000 h-0 opacity-0 group-hover:opacity-100 group-hover:block subitem bg-[#fff]"
+            class="absolute hidden h-0 opacity-0 group-hover:opacity-100 group-hover:block subitem bg-[#fff] py-1 px-4"
             style={{
               top: "0px",
               left: "0px",
@@ -35,7 +35,7 @@ function NavItem({ item }: { item: SiteNavigationElement }) {
                 loading="lazy"
               />
             )}
-            <ul class="hidden h-0 overflow-hidden group-hover:flex items-start justify-center gap-3 flex-col group-hover:max-h-screen group-hover:opacity-100 group-hover:h-[auto]">
+            <ul class="hidden opacity-0 h-0 overflow-hidden group-hover:flex items-start justify-center gap-3 flex-col group-hover:max-h-screen group-hover:opacity-100 group-hover:h-[auto] subitem">
               {children.map((node) => (
                 <li class="py-1 text-[#1a1a1a]">
                   <a class="hover:underline" href={node.url}>

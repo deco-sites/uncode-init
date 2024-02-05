@@ -71,7 +71,7 @@ function Menu({ items }: Props) {
           <li>
             Redes Socials
             <a
-              class="flex items-center gap-4 px-4 py-2"
+              class="flex items-center gap-4 px-4 py-2 hover:translate-x-[-4px] transition-all"
               href=""
             >
               <span class="text-sm">Facebook</span>
@@ -79,7 +79,7 @@ function Menu({ items }: Props) {
           </li>
           <li>
             <a
-              class="flex items-center gap-4 px-4 py-2"
+              class="flex items-center gap-4 px-4 py-2 hover:translate-x-[-4px] transition-all"
               href=""
             >
               <span class="text-sm">Twitter</span>
@@ -87,7 +87,7 @@ function Menu({ items }: Props) {
           </li>
           <li>
             <a
-              class="flex items-center gap-4 px-4 py-2"
+              class="flex items-center gap-4 px-4 py-2 hover:translate-x-[-4px] transition-all"
               href=""
             >
               <span class="text-sm">LinkedIn</span>
@@ -95,7 +95,7 @@ function Menu({ items }: Props) {
           </li>
           <li>
             <a
-              class="flex items-center gap-4 px-4 py-2"
+              class="flex items-center gap-4 px-4 py-2 hover:translate-x-[-4px] transition-all"
               href=""
             >
               <span class="text-sm">Instagram</span>

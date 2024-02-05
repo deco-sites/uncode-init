@@ -19,17 +19,17 @@ export default function FooterItems(
         <>
           {/* Tablet and Desktop view */}
           <ul
-            class={`hidden md:flex flex-row gap-6 lg:gap-10 ${
+            class={`hidden md:flex flex-row gap-6 lg:gap-10  ${
               justify && "lg:justify-between"
             }`}
           >
             {sections.map((section) => (
               <li>
                 <div class="flex flex-col gap-2">
-                  <span class="font-medium text-lg">
+                  <span class="font-medium text-lg hidden">
                     {section.label}
                   </span>
-                  <ul class={`flex flex-col gap-2 flex-wrap text-sm`}>
+                  <ul class={`flex flex-row gap-2 flex-wrap text-sm`}>
                     {section.items?.map((item) => (
                       <li>
                         <a href={item.href} class="block py-1 link link-hover">
@@ -50,7 +50,7 @@ export default function FooterItems(
                 <div class="collapse collapse-arrow ">
                   <input type="checkbox" class="min-h-[0]" />
                   <div class="collapse-title min-h-[0] !p-0 flex gap-2">
-                    <span>{section.label}</span>
+                    <span class="hidden">{section.label}</span>
                   </div>
                   <div class="collapse-content">
                     <ul
