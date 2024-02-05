@@ -20,7 +20,7 @@ export interface Props {
 
 function FeatureCard({ icon, title, text, href }: Card) {
   return (
-    <div class="feature-card px-[30px] group group-hover:-translate-y-3 w-[23%] bg-[#FFFFFF] items-start h-auto relative">
+    <div class="feature-card px-[30px] group group-hover:-translate-y-3 w-[23%] max-md:w-full bg-[#FFFFFF] items-start h-auto relative">
       {icon && (
         <div class="py-6 px-0 rounded-full bg-white text-[#1A1A1A]">
           <Icon id={icon} size={48} />
