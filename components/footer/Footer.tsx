@@ -179,16 +179,16 @@ function Footer({
     title: "Formas de pagamento",
     items: [{ label: "Mastercard" }, { label: "Visa" }, { label: "Pix" }],
   },
-  mobileApps = { apple: "/", android: "/" },
-  regionOptions = { currency: [], language: [] },
   extraLinks = {
     title: "Extra Links",
-    items: [{ label: "Mail" }, { label: "Maps" }, { label: "Phone" }],
+    items: [{ label: "Mail", link: "/", text: "" }, {
+      label: "Maps",
+      link: "/",
+      text: "",
+    }, { label: "PhoneFoo", link: "/", text: "" }],
   },
-  abouts = {
-    title: "About",
-    items: [{ label: "Mail" }, { label: "Maps" }, { label: "Phone" }],
-  },
+  mobileApps = { apple: "/", android: "/" },
+  regionOptions = { currency: [], language: [] },
   backToTheTop,
   layout = {
     backgroundColor: "Primary",
