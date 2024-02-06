@@ -59,7 +59,7 @@
     /* transition: 1s ease-out; */
   }
   .section-content{
-    max-width: 1296px;
+    max-width: 1320px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -99,6 +99,32 @@
   line-height: 1;
   
 }
+.partner .image::after{
+  background: #f5f7f9;
+  content: "";
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.partner:hover .image::after{
+  background: linear-gradient(130deg, transparent, #14cf93);
+  transition: all 0.4s;
+  opacity: 1;
+}
+.content-top .partner{
+  border-bottom: 0;
+}
+.bottom-four .partner:nth-child(2){
+  border-right: none;
+}
+.partner{
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0;
+}
+.partner:nth-child(even){
+  border-right: none;
+}
 .right-bottom{
   position: absolute;
   bottom: -2.1rem;
@@ -120,6 +146,93 @@
   transition: all 0.7s;
 
 }
+
+/* icons partner */
+.top-left .top-right{
+  right: 0;
+  top: 0;
+}
+.icon-plus{
+  position: absolute;
+  z-index: 9;
+}
+.icon-plus::after{
+  content: "+";
+  color:#1A1A1A50 ;
+  font-size: 40px;
+  background: #F5F7F9;
+  text-transform: uppercase;
+  position: relative;
+  top: -25px;
+}
+.top-left .top-right{
+  right: -12px;
+}
+.top-left.icon-plus{
+  top: 0;
+  left: -12px;
+}
+.top-end.icon-plus{
+  right: 0;
+  top: 0;
+}
+.top-center.icon-plus{
+  left: 48%;
+}
+.bottom-four .top-center.icon-plus{
+  left: 23.8%;
+}
+.bottom-four .top-right.icon-plus{
+  right: 49.5%;
+}
+.top-middle.icon-plus{
+  right: 24.5%;
+}
+.bottom-middle{
+  right: 24.5%;
+  bottom: 0;
+}
+.bottom-right{
+  right: 49.5%;
+  bottom: 0;
+}
+.bottom-center{
+  left: 23.8%;
+  bottom: 0;
+}
+.bottom-end{
+  right: 0;
+  bottom: 0;
+}
+.bottom-left{
+  left: -13px;
+}
+.bottom.icon-plus{
+  bottom: 0;
+  
+}
+.bottom.icon-plus::after{
+  bottom: -24px;
+  top: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .top-center.icon-plus{
+    left: -12px !important;
+    top: 49.3%;
+  }
+  .top-middle.icon-plus{
+    top: 49.3%;
+    right: 49.5%;
+  }
+  .bottom-middle.bottom.icon-plus{
+    right: 0;
+    top: 41.3%;
+  }
+}
+
+
+
 @keyframes fade-in {
   0% {
     opacity: 0;
