@@ -66,7 +66,7 @@ function Navbar(
       </div>
 
       {/* Desktop Version */}
-      <div class="hidden lg:grid lg:grid-cols-3 items-center w-full px-6 section-content relative">
+      <div class="hidden lg:grid lg:grid-cols-3 items-center w-full px-6 container relative">
         <div
           class={`flex gap-6 col-span-1 ${
             logoPosition === "left" ? "justify-center" : "justify-start"

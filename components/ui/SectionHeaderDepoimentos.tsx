@@ -27,7 +27,7 @@ function Header(props: Props) {
             {props.title &&
               (
                 <h1
-                  class={`text-sm font-light leading-8 lg:leading-10 relative text-border text-[#fc6001] border-b border-[#00000024]`}
+                  class={`text-sm font-light leading-8 lg:leading-10 relative text-[#fc6001]`}
                 >
                   {props.title}
                 </h1>
