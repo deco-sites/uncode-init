@@ -72,6 +72,9 @@
   section{
     margin-bottom: 30px;
   }
+  section .container{
+    max-width: 1720px;
+  }
   .item-card .left-top{
     position: absolute;
     bottom: 0;
@@ -133,7 +136,7 @@
   position: absolute;
 }
 .partner:hover .image::after{
-  background: linear-gradient(130deg, transparent, #14cf93);
+  background: linear-gradient(130deg, transparent, #fc6001);
   transition: all 0.4s;
   opacity: 1;
 }

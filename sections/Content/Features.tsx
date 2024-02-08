@@ -97,11 +97,11 @@ function FeatureCard({ icon, title, text, href }: Card) {
 export default function Features({ title, cards }: Props) {
   return (
     <section class="relative text-[#1a1a1a]  max-w-screen">
-      <div class="bg-[#F5F7F9] container py-[139px] pb-[139px]  max-md:py-[30px] max-md:pb-[30px] rounded-[30px] lg:px-[144px] max-md:px-[10px]">
+      <div class="bg-[#F5F7F9] container py-[139px] pb-[139px]  max-md:py-[30px] max-md:pb-[30px] rounded-[30px] lg:px-[5%] max-md:px-[10px]">
         <div class="text-sm text-[#fc6001] font-[500] px-6 border-b-[1px] container pb-6">
           <span>NOSSA ESPECIALIZAÇÃO</span>
         </div>
-        <div class="md:mx-6 container lg:mx-auto flex justify-between items-center flex-col gap-20">
+        <div class="container lg:mx-auto flex justify-between items-center flex-col gap-20">
           <div class="text_link flex flex-row justify-between items-center px-6 w-full mt-6 pt-[26px]">
             {title && (
               <h2 class="font-medium text-[26px] lg:text-[45px] leading-[100%] text-center max-w-4xl z-10 mb-4">
@@ -143,7 +143,7 @@ export default function Features({ title, cards }: Props) {
               </a>
             </div>
           </div>
-          <div class="features max-md:flex-col  xl:flex-nowrap">
+          <div class="features max-lg:flex-col  xl:flex-nowrap max">
             {cards?.map((card) => <FeatureCard {...card} />)}
           </div>
         </div>

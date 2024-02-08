@@ -91,7 +91,7 @@ function CategoryGrid(props: Props) {
       id={id}
       class=" mt-16 "
     >
-      <div class="container bg-[#F5F7F9] py-[139px] pb-[139px]  max-md:py-[30px] max-md:pb-[30px] rounded-[30px] lg:px-[144px] max-md:px-[10px]">
+      <div class="container bg-[#F5F7F9] py-[139px] pb-[139px]  max-md:py-[30px] max-md:pb-[30px] rounded-[30px] lg:px-[5%] max-md:px-[10px]">
         <Header
           title={header.title}
           description={header.description || ""}

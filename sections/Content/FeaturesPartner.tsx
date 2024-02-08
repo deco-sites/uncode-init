@@ -58,7 +58,7 @@ function FeatureCardPartner({ href, image }: Card) {
 export default function FeaturesPartner({ title, cards }: Props) {
   return (
     <section class="relative text-[#1a1a1a]">
-      <div class="bg-[#F5F7F9] container py-[139px] pb-[139px]  max-md:py-[30px] max-md:pb-[30px] rounded-[30px] lg:px-[144px]">
+      <div class="bg-[#F5F7F9] container py-[139px] pb-[139px]  max-md:py-[30px] max-md:pb-[30px] rounded-[30px] lg:px-[5%]">
         <div class="md:mx-6 container lg:mx-auto flex justify-between items-center flex-col gap-20 max-md:px-[10px]">
           <div class="features flex-col w-full gap-0 max-w-[100%]">
             <div class="content-top flex flex-row w-full justify-between max-md:flex-col-reverse">
@@ -86,7 +86,7 @@ export default function FeaturesPartner({ title, cards }: Props) {
                 </div>
               </div>
             </div>
-            <div class="bottom-four flex flex-row w-full relative max-md:flex-wrap max-md:grid max-md:grid-cols-2">
+            <div class="bottom-four flex flex-row w-full relative max-lg:flex-wrap max-lg:grid max-lg:grid-cols-2">
               <div class="top-left icon-plus"></div>
               <div class="top-center icon-plus"></div>
               <div class="top-middle icon-plus"></div>
