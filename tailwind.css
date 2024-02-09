@@ -19,7 +19,9 @@
     -webkit-appearance: none;
     margin: 0;
   }
-
+  section#\39 62415107{
+    margin-bottom: -30px;
+  }
   /* header scroll */
   header.scroll .flex-none.flex.items-center.justify-end.gap-6.col-span-1.w-\[fit-content\].absolute.right-0.h-full.min-w-\[90px\].border-l.border-\[\#FFFFFF33\]{
     border-color: #1a1a1a50;
@@ -40,13 +42,16 @@
   header.scroll a.flex-grow.inline-flex.items-center.justify-center{
     display: none !important;
   }
-  
+  h1.text-border::after{
+    top: 41px;
+  }
   .text-border::after{
     content:"";
     height: 40px;
     width: 1px;
     position: absolute;
     right: 0;
+    top: 0;
     display: block;
     background: #0000001A;
   }

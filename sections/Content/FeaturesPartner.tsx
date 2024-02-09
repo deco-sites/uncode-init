@@ -86,7 +86,7 @@ export default function FeaturesPartner({ title, cards }: Props) {
                 </div>
               </div>
             </div>
-            <div class="bottom-four flex flex-row w-full relative max-lg:flex-wrap max-lg:grid max-lg:grid-cols-2">
+            <div class="bottom-four flex flex-row w-full relative max-lg:flex-wrap max-lg:grid max-lg:grid-cols-4 max-md:grid-cols-2">
               <div class="top-left icon-plus"></div>
               <div class="top-center icon-plus"></div>
               <div class="top-middle icon-plus"></div>
