@@ -264,7 +264,24 @@
   }
 }
 
-
+@media screen and (min-width: 1024px) {
+  .content-banner{
+    margin-top: 243px;
+  }
+  .content-banner::before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: -5rem;
+    border: 1px solid #353535;
+    border-radius: 50%;
+    width: 100%;
+    right: -50rem;
+    height: 100%;
+    z-index: -5;
+  }
+  
+}
 
 @keyframes fade-in {
   0% {

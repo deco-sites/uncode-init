@@ -100,7 +100,7 @@ export default function FeaturesEquip({ title, cards }: Props) {
     <section class="relative text-[#1a1a1a] mt-32">
       <div class="container lg:px-[5%]">
         <div class="md:mx-6 container lg:mx-auto flex justify-between items-center flex-col gap-20 max-md:px-[10px]">
-          <div class="features flex-col w-full gap-0 max-w-[100%]">
+          <div class="features flex-col w-full gap-0 max-w-[1320px]">
             <div class="content-top flex flex-row w-full justify-between max-md:flex-col-reverse">
               <div class="top-right w-full">
                 <div class="text-sm text-[#fc6001] font-[500] container pb-6 border-b border-[#00000024]">
@@ -149,7 +149,7 @@ export default function FeaturesEquip({ title, cards }: Props) {
                 </div>
               </div>
             </div>
-            <div class="bottom-four flex flex-row w-full relative max-lg:flex-wrap gap-[70px] max-[991px]:justify-center">
+            <div class="bottom-four flex flex-row w-full justify-between relative max-lg:flex-wrap gap-[70px] max-[991px]:justify-center">
               {cards?.map((card) => (
                 <FeatureCardEquip
                   {...card}

@@ -48,14 +48,19 @@ export default defineApp(async (_req, ctx) => {
               var prev = document.querySelector('.prev-slide');
               var btnNext = document.querySelector('.btn-next');
               var btnPrev = document.querySelector('.btn-prev');
-          
-              next.addEventListener('click', function() {
-                  btnNext.click();
-              });
-          
-              prev.addEventListener('click', function() {
-                  btnPrev.click();
-              });
+              if (btnNext) {
+                next.addEventListener('click', function() {
+                    btnNext.click();
+                });
+                
+              }
+              
+              if (btnPrev) {
+                prev.addEventListener('click', function() {
+                    btnPrev.click();
+                });
+              
+              }
 
               window.addEventListener('scroll', function() {
                 var header = document.querySelector('header');

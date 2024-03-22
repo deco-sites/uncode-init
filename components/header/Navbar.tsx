@@ -30,7 +30,7 @@ function Navbar(
       {/* Mobile Version */}
       <div
         style={{ height: navbarHeight }}
-        class="lg:hidden grid grid-cols-3 justify-between items-center border-b border-base-200 w-full px-6 pb-6 gap-2 group border-none relative"
+        class="lg:hidden grid grid-cols-2 max-lg:flex justify-between items-center border-b border-base-200 w-full px-6 pb-6 gap-2 group border-none relative"
       >
         <MenuButton />
         {logo && (

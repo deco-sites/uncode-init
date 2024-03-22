@@ -6,6 +6,7 @@ import Image from "apps/website/components/Image.tsx";
 /**
  * @titleBy matcher
  */
+
 export interface Banner {
   /** @description RegExp to enable this banner on the current URL. Use /feminino/* to display this banner on feminino category  */
   matcher: string;
@@ -50,26 +51,26 @@ function Banner(props: SectionProps<ReturnType<typeof loader>>) {
   const { title, subtitle, image } = banner;
 
   return (
-    <div class="grid grid-cols-1 grid-rows-1">
+    <div class="grid grid-cols-1 grid-rows-1 relative z-10 content-banner">
       <Picture preload class="col-start-1 col-span-1 row-start-1 row-span-1">
         <Source
           src={image.mobile}
-          width={360}
-          height={120}
+          width={747}
+          height={996}
           media="(max-width: 767px)"
         />
         <Source
           src={image.desktop}
-          width={1440}
-          height={200}
+          width={1920}
+          height={520}
           media="(min-width: 767px)"
         />
         <Image
           class="w-full"
           src={image.desktop}
           alt={image.alt ?? title}
-          width={1440}
-          height={200}
+          width={1920}
+          height={520}
         />
       </Picture>
 
