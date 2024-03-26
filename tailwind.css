@@ -263,7 +263,35 @@
     top: 41.3%;
   }
 }
-
+html{
+  overflow-x: hidden;
+}
+.legend_right{
+  content: "";
+  position: absolute;
+  right: -15px;
+  bottom: -2px;
+}
+.legend_left{
+  content: "";
+  position: absolute;
+  left: -15px;
+  bottom: -2px;
+}
+.px-9.pb-\[94px\].posts h1{
+  border: none !important;
+}
+.px-9.pb-\[94px\].posts h1::after{
+  display: none !important;
+}
+.bgwhite{
+  background: #fff !important;
+}
+@media screen and (min-width: 1024px) {
+  .card-services{
+    border-right: 1px solid #0000001A !important;
+  }
+}
 @media screen and (min-width: 1024px) {
   .content-banner{
     margin-top: 243px;

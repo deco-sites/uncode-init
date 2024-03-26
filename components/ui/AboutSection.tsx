@@ -22,7 +22,7 @@ function BannerAbout(props: Props) {
             className={`container
             }`}
           >
-            <div class="max-w-[1320px] m-[auto] flex flex-col lg:flex-row gap-2">
+            <div class="max-w-[1320px] m-[auto] flex flex-col lg:flex-row gap-2 max-sm:mx-2">
               <div class="content flex flex-col gap-[103px] lg:w-1/2">
                 <div class="flex flex-col ">
                   {props.title &&
@@ -79,11 +79,10 @@ function BannerAbout(props: Props) {
               <div className="iframe lg:w-1/2">
                 {props.link && (
                   <iframe
-                    width="635px"
-                    height="423px"
+                    width="100%"
+                    height="420"
                     src={props.link}
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
                   >
                   </iframe>
                 )}

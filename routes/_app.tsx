@@ -63,7 +63,7 @@ export default defineApp(async (_req, ctx) => {
               }
 
               window.addEventListener('scroll', function() {
-                var header = document.querySelector('header');
+                var header = document.querySelector('header.home');
                 var homeSection = document.querySelector('.home-section'); // Seletor da seção inicial
             
                 // Verifica se estamos na página inicial e se a página foi rolada para baixo

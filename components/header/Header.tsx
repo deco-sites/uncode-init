@@ -94,7 +94,7 @@ function Header({
 
   return (
     <>
-      <header>
+      <header class="home">
         <Drawers
           menu={{ items }}
           platform={platform}
