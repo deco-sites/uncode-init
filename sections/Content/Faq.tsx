@@ -1,4 +1,4 @@
-import Header from "$store/components/ui/SectionHeader.tsx";
+import Header from "$store/components/ui/SectionHeaderFaq.tsx";
 
 export interface Question {
   question: string;
@@ -78,8 +78,10 @@ function Contact({ title, description, link }: Contact) {
           />
         )}
       </div>
-      {link &&
-        <a href={link.href} class="btn">{link.text}</a>}
+      {
+        /* {link &&
+        <a href={link.href} class="btn">{link.text}</a>} */
+      }
     </div>
   );
 }
