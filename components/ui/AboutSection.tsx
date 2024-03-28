@@ -1,9 +1,15 @@
+import Image from "apps/website/components/Image.tsx";
+import type { ImageWidget } from "apps/admin/widgets.ts";
 interface Props {
   title?: string;
   subtitle?: string;
   description?: string;
   href: string;
   link: string;
+  imgvideo?: {
+    image: ImageWidget;
+    description?: string;
+  };
 }
 
 const fontSizeClasses = {
@@ -16,7 +22,7 @@ function BannerAbout(props: Props) {
   return (
     <>
       {props.title || props.description || props.subtitle || props.href ||
-          props.link
+          props.link || props.imgvideo
         ? (
           <div
             className={`container
@@ -77,14 +83,29 @@ function BannerAbout(props: Props) {
                 </div>
               </div>
               <div className="iframe lg:w-1/2">
+                {props.imgvideo?.image && (
+                  <div class="flex flex-col gap-3 cursor-pointer img-iframe">
+                    <Image
+                      class="w-full h-full"
+                      loading="lazy"
+                      src={props.imgvideo?.image}
+                      alt={props.imgvideo?.description}
+                      width={635}
+                      height={423}
+                    />
+                  </div>
+                )}
                 {props.link && (
-                  <iframe
-                    width="100%"
-                    height="420"
-                    src={props.link}
-                    allowFullScreen
-                  >
-                  </iframe>
+                  <div class="iframe-video block-iframe hidden justify-center items-center w-[100vw] h-full fixed left-0 top-0 bg-[#00000070] z-50">
+                    <iframe
+                      class="z-40 w-[50%] max-md:lg:w-full"
+                      width="auto"
+                      height="420"
+                      src={props.link}
+                      allowFullScreen
+                    >
+                    </iframe>
+                  </div>
                 )}
               </div>
             </div>

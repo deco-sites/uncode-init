@@ -75,6 +75,22 @@ export default defineApp(async (_req, ctx) => {
                 
               }
               });
+
+
+              // iframe
+              const imgIframe = document.querySelector('.img-iframe');
+              const blockIframe = document.querySelector('.block-iframe');
+          
+              imgIframe.addEventListener('click', function() {
+                blockIframe.classList.add('flex');
+                blockIframe.classList.remove('hidden');
+              });
+          
+              blockIframe.addEventListener('click', function() {
+                this.classList.remove('flex');
+                this.classList.add('hidden');
+              });
+
             `,
         }}
       >

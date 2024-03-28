@@ -13,8 +13,8 @@ function MenuItem({ item }: { item: SiteNavigationElement }) {
       {hasChildren && <input type="checkbox" />}
 
       <div
-        className={`collapse-title first:border-t-2 text-[50px]  ${
-          hasChildren ? "text-[50px]" : "text-[22px]"
+        className={`collapse-title first:border-t-2 text-[50px] max-md:text-[40px] ${
+          hasChildren ? "text-[50px] max-md:text-[40px]" : "text-[22px]"
         }`}
       >
         {item.name}

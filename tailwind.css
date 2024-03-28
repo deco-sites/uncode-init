@@ -206,7 +206,7 @@
   left: -12px;
 }
 .top-end.icon-plus{
-  right: 0;
+  right: -12px;
   top: 0;
 }
 .top-center.icon-plus{
@@ -216,17 +216,17 @@
   left: 23.8%;
 }
 .bottom-four .top-right.icon-plus{
-  right: 49.5%;
+  right: 48.6%;
 }
 .top-middle.icon-plus{
-  right: 24.5%;
+  right: 23.7%;
 }
 .bottom-middle{
-  right: 24.5%;
+  right: 23.6%;
   bottom: 0;
 }
 .bottom-right{
-  right: 49.5%;
+  right: 48.6%;
   bottom: 0;
 }
 .bottom-center{
@@ -234,7 +234,7 @@
   bottom: 0;
 }
 .bottom-end{
-  right: 0;
+  right: -12px;
   bottom: 0;
 }
 .bottom-left{
@@ -262,6 +262,18 @@
     right: 0;
     top: 41.3%;
   }
+  .bottom-four .top-right.icon-plus, .top-middle.icon-plus{
+    right: 47%;
+  }
+  .bottom-four .top-end.icon-plus{
+    right: -12px;
+  }
+  .bottom-middle, .bottom-end.bottom.icon-plus{
+    right: -12px;
+  }
+  .bottom-right.bottom.icon-plus{
+    right: 47%;
+  }
 }
 html{
   overflow-x: hidden;
@@ -287,6 +299,17 @@ html{
 .bgwhite{
   background: #fff !important;
 }
+
+@media screen and (min-width: 1024px) {
+  .block-dev:nth-child(1){
+    width: 30%;
+  }
+  .block-dev:nth-child(2){
+    width: 62%;
+  }
+}
+
+
 @media screen and (min-width: 1024px) {
   .card-services{
     border-right: 1px solid #0000001A !important;

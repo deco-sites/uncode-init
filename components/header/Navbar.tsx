@@ -30,13 +30,13 @@ function Navbar(
       {/* Mobile Version */}
       <div
         style={{ height: navbarHeight }}
-        class="lg:hidden grid grid-cols-2 max-lg:flex justify-between items-center border-b border-base-200 w-full px-6 pb-6 gap-2 group border-none relative"
+        class="lg:hidden grid grid-cols-2 max-lg:flex flex-row-reverse justify-between items-center border-b border-base-200 w-full px-6 pt-6 pb-6 gap-2 group border-none relative"
       >
         <MenuButton />
         {logo && (
           <a
             href="/"
-            class="flex-grow inline-flex items-center justify-center"
+            class="flex-grow inline-flex items-center justify-center max-lg:justify-start"
             style={{ minHeight: navbarHeight }}
             aria-label="Store logo"
           >
@@ -51,7 +51,7 @@ function Navbar(
         {secondLogo && (
           <a
             href="/"
-            class="flex-grow items-center justify-center hidden "
+            class="flex-grow items-center justify-center hidden max-lg:justify-start"
             style={{ minHeight: navbarHeight }}
             aria-label="Store logo"
           >
@@ -120,7 +120,7 @@ function Navbar(
           )}
         </div>
 
-        <div class="flex-none flex items-center justify-end gap-6 col-span-1 w-[fit-content] absolute right-0 h-full min-w-[90px] border-l border-[#FFFFFF33]">
+        <div class="flex-none flex items-center gap-6 col-span-1 w-[fit-content] absolute right-0 h-full min-w-[90px] border-l border-[#FFFFFF33]">
           <MenuButton />
         </div>
       </div>

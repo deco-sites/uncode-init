@@ -5,10 +5,10 @@ import Card from "deco-sites/uncode-init/components/daisy/Card.tsx";
  */
 export interface Card {
   icon?: AvailableIcons;
+  title: string;
   /**
    * @format html
    */
-  title: string;
   text: string;
   href: string;
 }
@@ -20,7 +20,7 @@ export interface Props {
 
 function FeatureCard({ icon, title, text, href }: Card) {
   return (
-    <div class="feature-card px-[30px] group group-hover:-translate-y-3 w-[auto] max-md:w-full bg-[#FFFFFF] items-start h-auto relative max-w-[318px]">
+    <div class="feature-card h-full max-h-[480px] px-[30px] group group-hover:-translate-y-3 w-[auto] max-md:w-full bg-[#FFFFFF] items-start relative max-w-[318px]">
       {icon && (
         <div class="py-6 px-0 rounded-full bg-white text-[#1A1A1A]">
           <Icon id={icon} size={48} />
@@ -143,7 +143,7 @@ export default function Features({ title, cards }: Props) {
               </a>
             </div>
           </div>
-          <div class="features max-lg:flex-col  xl:flex-nowrap max">
+          <div class="features max-lg:flex-col  xl:flex-nowrap grid grid-cols-4 max-sm:grid-cols-1 max-[1200px]:grid-cols-2">
             {cards?.map((card) => <FeatureCard {...card} />)}
           </div>
         </div>

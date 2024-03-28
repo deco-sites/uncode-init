@@ -1,6 +1,6 @@
 interface Props {
-  title?: string;
-  subtitle?: string;
+  home?: string;
+  breadpage?: string;
   fontSize?: "Small" | "Normal" | "Large";
   description?: string;
   alignment: "center" | "left";
@@ -17,40 +17,42 @@ const fontSizeClasses = {
 function BannerText(props: Props) {
   return (
     <>
-      {props.title || props.description || props.subtitle
+      {props.home || props.description || props.breadpage
         ? (
           <div
             className={`container relative mt-[140px] max-md:px-[10px] lg:px-[5%] text- flex flex-col gap-2 ${
               props.alignment === "left" ? "text-left" : "text-center"
             }`}
           >
-            {props.title &&
-              (
-                <h1
-                  className={`text-sm font-light leading-8 lg:leading-10 relative text-[#fc6001] ${
-                    props.fontSize ? fontSizeClasses[props.fontSize] : ""
-                  }`}
-                >
-                  {props.title}
-                </h1>
-              )}
-            {props.subtitle &&
-              (
-                <h3
-                  className={`text-[46px] font-light leading-8 lg:leading-10 max-md:text-[24px]`}
-                >
-                  {props.subtitle}
-                </h3>
-              )}
             {props.description &&
               (
                 <h2
                   className={`
-                  text-[46px] font-light leading-8 lg:leading-10 max-md:text-[24px] mb-16`}
+                  text-[46px] font-light leading-8 lg:leading-10 max-md:text-[24px] mb-8`}
                 >
                   {props.description}
                 </h2>
               )}
+            <div class="breadcrumb flex items-center gap-[8px]">
+              {props.home &&
+                (
+                  <h1
+                    className={`text-[15px] font-light leading-8 lg:leading-10 relative text-[#1a1a1a] ${
+                      props.fontSize ? fontSizeClasses[props.fontSize] : ""
+                    }`}
+                  >
+                    {props.home}
+                  </h1>
+                )}
+              {props.breadpage &&
+                (
+                  <h3
+                    className={`text-[15px] font-medium leading-8 lg:leading-10 text-[#FC6001]`}
+                  >
+                    {props.breadpage}
+                  </h3>
+                )}
+            </div>
           </div>
         )
         : null}

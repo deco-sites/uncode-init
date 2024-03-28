@@ -2,6 +2,9 @@ interface Props {
   title?: string;
   subtitle?: string;
   fontSize?: "Small" | "Normal" | "Large";
+  /**
+   * @format html
+   */
   description?: string;
   alignment: "center" | "left";
   colorReverse?: boolean;
