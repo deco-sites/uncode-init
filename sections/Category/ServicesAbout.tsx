@@ -12,6 +12,8 @@ export interface ServicesAbout {
   title?: string;
   item?: string;
   description?: string;
+  width?: number;
+  height?: number;
   image?: ImageWidget;
   /** @description Alternative text */
   label?: string;
@@ -104,7 +106,7 @@ function ServicesAbout(props: Props) {
 
         <div class="flex gap-8 flex-col lg:flex-row">
           {list.map((
-            { href, image, label, title, items, description },
+            { href, image, label, title, items, description, width, height },
           ) => (
             <div class="block-dev">
               <a
@@ -128,8 +130,8 @@ function ServicesAbout(props: Props) {
                             class="w-full object-contain"
                             src={image}
                             alt={label}
-                            width={880}
-                            height={400}
+                            width={width || 440}
+                            height={height || 400}
                             loading="lazy"
                           />
                         </figure>
