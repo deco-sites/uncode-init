@@ -22,24 +22,30 @@
   section#\39 62415107{
     margin-bottom: -30px;
   }
+  section#\35 79867276, section#\33 451013133, section#\31 786006507, section#\33 405689579{
+    margin-bottom: 0 !important;
+  }
   /* header scroll */
-  header.scroll .flex-none.flex.items-center.justify-end.gap-6.col-span-1.w-\[fit-content\].absolute.right-0.h-full.min-w-\[90px\].border-l.border-\[\#FFFFFF33\]{
+  header.home .bg-\[\#FFFFFF01\].fixed.w-full.z-50.text-\[\#fff\].top-0{
+    background-color: transparent !important;
+  }
+  header.home.scroll .flex-none.flex.items-center.justify-end.gap-6.col-span-1.w-\[fit-content\].absolute.right-0.h-full.min-w-\[90px\].border-l.border-\[\#FFFFFF33\]{
     border-color: #1a1a1a50;
   }
-  header.scroll div.top-0{
+ header.home.scroll .bg-\[\#FFFFFF01\].fixed.w-full.z-50.text-\[\#fff\].top-0{
     background: #fff !important;
     color: #1a1a1a !important;
   }
-  header.scroll .hidden.-order-1{
+ header.home.scroll .hidden.-order-1{
     display: flex !important;
   }
-  header.scroll .flex.-order-1{
+ header.home.scroll .flex.-order-1{
     display: none !important;
   }
-  header.scroll a.flex-grow.items-center.justify-center.hidden{
+ header.home.scroll a.flex-grow.items-center.justify-center.hidden{
     display: flex !important;
   }
-  header.scroll a.flex-grow.inline-flex.items-center.justify-center{
+ header.home.scroll a.flex-grow.inline-flex.items-center.justify-center{
     display: none !important;
   }
   h1.text-border::after{
