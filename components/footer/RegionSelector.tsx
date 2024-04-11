@@ -16,7 +16,9 @@ export interface RegionOptions {
 
 export default function RegionSelectorIsland({ content }: Props) {
   // Função para definir o cookie de idioma
-  const setLanguageCookie = (languageCode: string): void => {
+  const setLanguageCookie: (languageCode: string) => void = (
+    languageCode: string,
+  ) => {
     const uppercaseLanguageCode = languageCode.toUpperCase(); // Converter para maiúsculas
     document.cookie = `EN=${uppercaseLanguageCode}; path=/`; // Modificado para usar o nome de cookie "EN" com valor em maiúsculas
     window.location.reload();
@@ -45,9 +47,7 @@ export default function RegionSelectorIsland({ content }: Props) {
 
   const handleSelectChange = (event: Event) => {
     const target = event.target as HTMLSelectElement;
-    if (
-      !target || !(target instanceof HTMLSelectElement) || target.value === null
-    ) return;
+    if (!target || !(target instanceof HTMLSelectElement)) return;
 
     const selectedValue = target.value;
 
@@ -102,7 +102,10 @@ export default function RegionSelectorIsland({ content }: Props) {
               id="languageSelect"
               class="select select-bordered select-sm h-10"
               value={selectedLanguage}
-              onChange={(event) => setLanguageCookie(event.target.value)}
+              onChange={(event) =>
+                event.target && event.target instanceof HTMLSelectElement
+                  ? setLanguageCookie(event.target.value)
+                  : null}
             >
               {content.language.map((lng, index) => (
                 <option
