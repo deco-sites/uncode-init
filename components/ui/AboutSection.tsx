@@ -98,7 +98,7 @@ function BannerAbout(props: Props) {
                 {props.link && (
                   <div class="iframe-video block-iframe hidden justify-center items-center w-[100vw] h-full fixed left-0 top-0 bg-[#00000070] z-50">
                     <iframe
-                      class="z-40 w-[50%] max-md:lg:w-full"
+                      class="z-40 w-[50%] max-md:w-full"
                       width="auto"
                       height="420"
                       src={props.link}

@@ -6,12 +6,15 @@ import FooterItems from "$store/components/footer/FooterItems.tsx";
 import Logo from "$store/components/footer/Logo.tsx";
 import MobileApps from "$store/components/footer/MobileApps.tsx";
 import PaymentMethods from "$store/components/footer/PaymentMethods.tsx";
-import RegionSelector from "$store/components/footer/RegionSelector.tsx";
+// import RegionSelector from "$store/components/footer/RegionSelector.tsx";
 import Social from "$store/components/footer/Social.tsx";
 import Newsletter from "$store/islands/Newsletter.tsx";
+import RegionSelector from "$store/islands/Footer/RegionSelector.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
 import Abouts from "$store/components/footer/About.tsx";
+import Copyright from "$store/components/footer/Copyright.tsx";
 import Icon, { AvailableIcons } from "$store/components/ui/Icon.tsx";
+
 export type Item = {
   label: string;
   href: string;
@@ -91,6 +94,7 @@ export interface Layout {
     regionOptions?: boolean;
     extraLinks?: boolean;
     abouts?: boolean;
+    copyright?: boolean;
     backToTheTop?: boolean;
   };
 }
@@ -123,6 +127,9 @@ export interface Props {
     text?: string;
   };
   abouts?: {
+    text?: string;
+  };
+  copyright?: {
     text?: string;
   };
   backToTheTop?: {
@@ -190,6 +197,7 @@ function Footer({
   mobileApps = { apple: "/", android: "/" },
   regionOptions = { currency: [], language: [] },
   backToTheTop,
+  copyright,
   layout = {
     backgroundColor: "Primary",
     variation: "Variation 1",
@@ -203,6 +211,7 @@ function Footer({
       regionOptions: false,
       extraLinks: false,
       abouts: false,
+      copyright: false,
       backToTheTop: false,
     },
   },
@@ -227,6 +236,7 @@ function Footer({
   const _social = layout?.hide?.socialLinks
     ? <></>
     : <Social content={social} vertical={layout?.variation == "Variation 3"} />;
+
   // const _abouts = layout?.hide?.abouts ? <></> : <Abouts content={abouts} />;
   const _payments = layout?.hide?.paymentMethods
     ? <></>
@@ -260,20 +270,26 @@ function Footer({
             <div class="flex flex-col md:flex-row gap-10 md:gap-14 md:items-end justify-center">
               {/* {_payments} */}
               {_links}
-
+              {_region}
               <div class="flex flex-col lg:flex-row gap-10 lg:gap-14 lg:items-end">
                 {
-                  /* {_apps}
-                {_region} */
+                  /* {_apps}*/
                 }
               </div>
             </div>
             <Divider />
             <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10 bg-[#FFFFFF] rounded-[30px] p-8 items-center max-sm:mb-[30px]">
               {_social}
-              <span class="text-sm text-[#777777] font-normal">
+
+              {layout?.hide?.copyright
+                ? <></>
+                : <Copyright content={copyright?.text} />}
+
+              {
+                /* <span class="text-sm text-[#777777] font-normal">
                 © 2024 Uncode Tech - Todos direitos reservados
-              </span>
+              </span> */
+              }
 
               {_sectionLinks}
             </div>

@@ -21,7 +21,7 @@ export default function Links(
         <div class="flex flex-col gap-4">
           {content.title && <h3 class="text-lg">{content.title}</h3>}
           <ul
-            class={`flex gap-[18px] max-sm:flex-col ${
+            class={`flex gap-[18px] max-md:justify-center max-sm:flex-col ${
               vertical ? "lg:flex-col lg:items-start" : "flex-wrap items-center"
             }`}
           >
