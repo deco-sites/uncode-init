@@ -1,5 +1,6 @@
 import Icon, { AvailableIcons } from "$store/components/ui/Icon.tsx";
 import Card from "deco-sites/uncode-init/components/daisy/Card.tsx";
+
 /**
  * @titleBy title
  */
@@ -15,6 +16,8 @@ export interface Card {
 
 export interface Props {
   title?: string;
+  subtitle?: string;
+  description?: string;
   cards: Card[];
 }
 
@@ -94,12 +97,14 @@ function FeatureCard({ icon, title, text, href }: Card) {
   );
 }
 
-export default function Features({ title, cards }: Props) {
+export default function Features(
+  { title, cards, subtitle, description }: Props,
+) {
   return (
     <section class="relative text-[#1a1a1a]  max-w-screen">
       <div class="bg-[#F5F7F9] container py-[139px] pb-[139px]  max-md:py-[30px] max-md:pb-[30px] rounded-[30px] lg:px-[5%] max-md:px-[10px]">
         <div class="text-sm text-[#fc6001] font-[500] px-6 border-b-[1px] container pb-6">
-          <span>NOSSA ESPECIALIZAÇÃO</span>
+          <span>{subtitle}</span>
         </div>
         <div class="container lg:mx-auto flex justify-between items-center flex-col gap-20">
           <div class="text_link flex flex-row justify-between items-center px-6 w-full mt-6 pt-[26px]">
@@ -113,7 +118,7 @@ export default function Features({ title, cards }: Props) {
                 href="/serviços"
                 class="flex flex-row gap-[6px] items-center text-[#1a1a1a] text-[15px]"
               >
-                Visualizar serviços
+                {description}
                 <i class="rounded-full bg-[#0000000D] w-[40px] h-[40px] flex justify-center items-center">
                   <svg
                     width="17"
