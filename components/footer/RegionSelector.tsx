@@ -16,6 +16,7 @@ export interface RegionOptions {
 
 export default function RegionSelectorIsland({ content }: Props) {
   // Função para definir o cookie de idioma
+
   const setLanguageCookie: (languageCode: string) => void = (
     languageCode: string,
   ) => {
@@ -51,23 +52,22 @@ export default function RegionSelectorIsland({ content }: Props) {
     if (!target || !(target instanceof HTMLSelectElement)) return;
 
     const selectedValue = target.value;
+    const storedLanguage = localStorage.getItem("selectedLanguage");
 
-    // Armazena o valor selecionado no localStorage
-    localStorage.setItem("selectedLanguage", selectedValue);
+    // Verifica se o idioma selecionado é diferente do idioma armazenado no cookie
+    if (selectedValue.toUpperCase() !== storedLanguage?.toUpperCase()) {
+      // Armazena o valor selecionado no localStorage
+      localStorage.setItem("selectedLanguage", selectedValue);
 
-    // Verifica se o idioma selecionado é igual ao idioma armazenado no cookie correspondente
-    const selectedLanguageCookie = getCookie(selectedValue.toUpperCase());
-    if (
-      selectedLanguageCookie &&
-      selectedValue.toUpperCase() === selectedLanguageCookie.toUpperCase()
-    ) {
-      // Se sim, define o cookie novamente e recarrega a página
+      // Define o cookie correspondente ao idioma selecionado
       setLanguageCookie(selectedValue);
     }
   };
 
   // Obtém o valor selecionado do localStorage, fornecendo um valor padrão de string vazia se o valor retornado for null
-  const selectedLanguage = localStorage.getItem("selectedLanguage") ?? "";
+  const selectedLanguage = typeof localStorage !== "undefined"
+    ? localStorage.getItem("selectedLanguage") ?? ""
+    : "";
 
   // Função para obter o valor do cookie
   const getCookie = (name: string) => {
