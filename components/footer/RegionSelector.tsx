@@ -20,7 +20,7 @@ export default function RegionSelectorIsland({ content }: Props) {
     const uppercaseLanguageCode = languageCode.toUpperCase(); // Converter para maiúsculas
     document.cookie =
       `${uppercaseLanguageCode}=${uppercaseLanguageCode}; path=/`; // Modificado para usar o nome de cookie com valor em maiúsculas
-  
+
     // Excluir cookie anterior
     const allCookies = document.cookie.split(";");
     for (const cookie of allCookies) { // Alteração feita aqui
@@ -30,10 +30,9 @@ export default function RegionSelectorIsland({ content }: Props) {
           `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
       }
     }
-  
+
     window.location.reload();
   };
-  
 
   useEffect(() => {
     console.log("Component mounted");
