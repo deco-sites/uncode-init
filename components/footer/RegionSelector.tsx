@@ -20,13 +20,14 @@ export default function RegionSelectorIsland({ content }: Props) {
     languageCode: string,
   ) => {
     const uppercaseLanguageCode = languageCode.toUpperCase(); // Converter para maiúsculas
-    document.cookie = `EN=${uppercaseLanguageCode}; path=/`; // Modificado para usar o nome de cookie "EN" com valor em maiúsculas
+    document.cookie =
+      `${uppercaseLanguageCode}=${uppercaseLanguageCode}; path=/`; // Modificado para usar o nome de cookie com valor em maiúsculas
     window.location.reload();
   };
 
   useEffect(() => {
     const languageSelect = document.getElementById(
-      "lenguage",
+      "language",
     ) as HTMLDivElement;
     if (languageSelect) {
       const selectElements = languageSelect.querySelectorAll("select");
@@ -54,11 +55,11 @@ export default function RegionSelectorIsland({ content }: Props) {
     // Armazena o valor selecionado no localStorage
     localStorage.setItem("selectedLanguage", selectedValue);
 
-    // Verifica se o idioma selecionado é igual ao idioma armazenado no cookie "EN"
-    const enCookie = getCookie("EN");
+    // Verifica se o idioma selecionado é igual ao idioma armazenado no cookie correspondente
+    const selectedLanguageCookie = getCookie(selectedValue.toUpperCase());
     if (
-      enCookie &&
-      selectedValue.toUpperCase() === enCookie.toUpperCase()
+      selectedLanguageCookie &&
+      selectedValue.toUpperCase() === selectedLanguageCookie.toUpperCase()
     ) {
       // Se sim, define o cookie novamente e recarrega a página
       setLanguageCookie(selectedValue);
@@ -84,7 +85,7 @@ export default function RegionSelectorIsland({ content }: Props) {
   return (
     <>
       {content && content.language && content.currency && (
-        <div class="flex flex-wrap gap-4 text-base-content" id="lenguage">
+        <div class="flex flex-wrap gap-4 text-base-content" id="language">
           {content?.currency?.length > 0 && (
             <select
               id="currencySelect"
