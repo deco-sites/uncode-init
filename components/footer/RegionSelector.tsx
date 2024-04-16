@@ -16,17 +16,28 @@ export interface RegionOptions {
 
 export default function RegionSelectorIsland({ content }: Props) {
   // Função para definir o cookie de idioma
-
-  const setLanguageCookie: (languageCode: string) => void = (
-    languageCode: string,
-  ) => {
+  const setLanguageCookie = (languageCode: string) => {
     const uppercaseLanguageCode = languageCode.toUpperCase(); // Converter para maiúsculas
     document.cookie =
       `${uppercaseLanguageCode}=${uppercaseLanguageCode}; path=/`; // Modificado para usar o nome de cookie com valor em maiúsculas
+  
+    // Excluir cookie anterior
+    const allCookies = document.cookie.split(";");
+    for (const cookie of allCookies) { // Alteração feita aqui
+      const [name] = cookie.split("=");
+      if (name.trim().toUpperCase() !== uppercaseLanguageCode) {
+        document.cookie =
+          `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
+      }
+    }
+  
     window.location.reload();
   };
+  
 
   useEffect(() => {
+    console.log("Component mounted");
+
     const languageSelect = document.getElementById(
       "language",
     ) as HTMLDivElement;
@@ -38,6 +49,8 @@ export default function RegionSelectorIsland({ content }: Props) {
     }
 
     return () => {
+      console.log("Component unmounted");
+
       const selectElements = languageSelect?.querySelectorAll("select");
       if (selectElements) {
         selectElements.forEach((selectElement) => {
@@ -54,7 +67,10 @@ export default function RegionSelectorIsland({ content }: Props) {
     const selectedValue = target.value;
     const storedLanguage = localStorage.getItem("selectedLanguage");
 
-    // Verifica se o idioma selecionado é diferente do idioma armazenado no cookie
+    console.log("Selected language:", selectedValue);
+    console.log("Stored language:", storedLanguage);
+
+    // Verifica se o idioma selecionado é diferente do idioma armazenado atualmente
     if (selectedValue.toUpperCase() !== storedLanguage?.toUpperCase()) {
       // Armazena o valor selecionado no localStorage
       localStorage.setItem("selectedLanguage", selectedValue);
@@ -73,10 +89,10 @@ export default function RegionSelectorIsland({ content }: Props) {
   const getCookie = (name: string) => {
     const cookieString = document.cookie;
     const cookies = cookieString.split(";");
-    for (let i = 0; i < cookies.length; i++) {
-      const cookie = cookies[i].trim();
-      if (cookie.startsWith(name + "=")) {
-        return cookie.substring(name.length + 1);
+    for (const cookie of cookies) {
+      const [cookieName, cookieValue] = cookie.split("=");
+      if (cookieName.trim() === name) {
+        return cookieValue;
       }
     }
     return null;
