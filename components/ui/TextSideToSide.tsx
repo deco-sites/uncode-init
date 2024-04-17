@@ -45,15 +45,13 @@ function BannerTextSide(props: Props) {
                   {props.subtitle}
                 </h3>
               )}
-            {props.description &&
-              (
-                <span
-                  className={`
-                  text-[28px] font-light leading-8 lg:leading-10 max-md:text-[24px] lg:w-1/2 mb-16`}
-                >
-                  {props.description}
-                </span>
-              )}
+            {props.description && (
+              <div
+                className={`
+                text-[28px] font-light leading-8 lg:leading-10 max-md:text-[24px] lg:w-1/2 mb-16`}
+                dangerouslySetInnerHTML={{ __html: props.description }}
+              />
+            )}
           </div>
         )
         : null}

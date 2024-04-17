@@ -39,6 +39,7 @@ export interface Card {
 
 export interface Props {
   title?: string;
+  subtitle?: string;
   cards: Card[];
   // social?: {
   //   items: SocialItem[];
@@ -95,7 +96,7 @@ function FeatureCardEquip(
   );
 }
 
-export default function FeaturesEquip({ title, cards }: Props) {
+export default function FeaturesEquip({ title, cards, subtitle }: Props) {
   return (
     <section class="relative text-[#1a1a1a] mt-32">
       <div class="container lg:px-[5%]">
@@ -104,7 +105,7 @@ export default function FeaturesEquip({ title, cards }: Props) {
             <div class="content-top flex flex-row w-full justify-between max-md:flex-col-reverse">
               <div class="top-right w-full">
                 <div class="text-sm text-[#fc6001] font-[500] container pb-6 border-b border-[#00000024]">
-                  <span>AGRADECIMENTOS ESPECIAIS PARA</span>
+                  <span>{subtitle}</span>
                 </div>
                 <div class="text_link flex flex-row justify-between items-center w-full text-border relative">
                   {title && (
