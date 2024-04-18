@@ -4,6 +4,7 @@ import type { ImageWidget } from "apps/admin/widgets.ts";
 import type { SiteNavigationElement } from "apps/commerce/types.ts";
 import Alert from "./Alert.tsx";
 import Navbar from "./Navbar.tsx";
+import SideItem from "./SideItem.tsx";
 import { headerHeight } from "./constants.ts";
 
 export interface Logo {
@@ -32,7 +33,7 @@ export interface Props {
    * @description Navigation items used both on mobile and desktop menus
    */
   navItems?: SiteNavigationElement[] | null;
-
+  itemsSide?: SiteNavigationElement[] | null;
   /** @title Logo */
   logo?: Logo;
 
@@ -50,6 +51,28 @@ export interface Props {
 function HeaderPages({
   alerts,
   navItems = [
+    {
+      "@type": "SiteNavigationElement",
+      name: "Feminino",
+      url: "/",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      name: "Masculino",
+      url: "/",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      name: "Sale",
+      url: "/",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      name: "Linktree",
+      url: "/",
+    },
+  ],
+  itemsSide = [
     {
       "@type": "SiteNavigationElement",
       name: "Feminino",
@@ -91,20 +114,24 @@ function HeaderPages({
 }: Props) {
   const platform = usePlatform();
   const items = navItems ?? [];
+  const itemsSides = itemsSide ?? [];
 
   return (
     <>
       <header>
         <Drawers
-          menu={{ items }}
+          menu={{ items, itemsSide: itemsSides }} // Corrigindo o nome da propriedade
           platform={platform}
         >
-          <div class="bg-[#FFFFFF] fixed w-[100vw] z-50 text-[#000] top-0">
+          <div class="bg-[#FFFFFF01] fixed w-full z-50 text-[#fff] top-0">
             {alerts && alerts.length > 0 && <Alert alerts={alerts} />}
             <Navbar
               items={items}
+              itemsSide={itemsSides} // Passando itemsSide como propriedade
               logo={logo}
               logoPosition={logoPosition}
+              secondLogo={secondLogo}
+              secondLogoPosition={secondLogoPosition}
               buttons={buttons}
             />
           </div>
