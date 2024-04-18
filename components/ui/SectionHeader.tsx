@@ -1,4 +1,7 @@
 interface Props {
+  /**
+   * @format html
+   */
   title?: string;
   subtitle?: string;
   fontSize?: "Small" | "Normal" | "Large";
@@ -28,16 +31,18 @@ function Header(props: Props) {
               (
                 <h1
                   class={`text-sm font-light leading-8 lg:leading-10 relative text-border text-[#fc6001] border-b border-[#00000024]`}
+                  dangerouslySetInnerHTML={{ __html: props.title }}
                 >
-                  {props.title}
+                  {/* {props.title} */}
                 </h1>
               )}
             {props.subtitle &&
               (
                 <h3
                   class={`text-[46px] font-light leading-8 lg:leading-10 max-md:text-[24px]`}
+                  dangerouslySetInnerHTML={{ __html: props.subtitle }}
                 >
-                  {props.subtitle}
+                  {/* {props.subtitle} */}
                 </h3>
               )}
             {props.description &&
@@ -45,8 +50,9 @@ function Header(props: Props) {
                 <h2
                   class={`
                   text-[46px] font-light leading-8 lg:leading-10 max-md:text-[24px] mb-16`}
+                  dangerouslySetInnerHTML={{ __html: props.description }}
                 >
-                  {props.description}
+                  {/* {props.description} */}
                 </h2>
               )}
           </div>

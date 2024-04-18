@@ -6,6 +6,7 @@ import Card from "deco-sites/uncode-init/components/daisy/Card.tsx";
  */
 export interface Card {
   icon?: AvailableIcons;
+
   title: string;
   /**
    * @format html
@@ -15,6 +16,9 @@ export interface Card {
 }
 
 export interface Props {
+  /**
+   * @format html
+   */
   title?: string;
   subtitle?: string;
   description?: string;
@@ -23,7 +27,7 @@ export interface Props {
 
 function FeatureCard({ icon, title, text, href }: Card) {
   return (
-    <div class="feature-card h-full max-h-[480px] px-[30px] group group-hover:-translate-y-3 w-[auto] max-md:w-full bg-[#FFFFFF] items-start relative max-w-[318px]">
+    <div class="feature-card h-full px-[30px] group group-hover:-translate-y-3 w-[auto] max-md:w-full bg-[#FFFFFF] items-start relative max-w-[318px]">
       {icon && (
         <div class="py-6 px-0 rounded-full bg-white text-[#1A1A1A]">
           <Icon id={icon} size={48} />
@@ -109,8 +113,10 @@ export default function Features(
         <div class="container lg:mx-auto flex justify-between items-center flex-col gap-20">
           <div class="text_link flex flex-row justify-between items-center px-6 w-full mt-6 pt-[26px]">
             {title && (
-              <h2 class="font-medium text-[26px] lg:text-[45px] leading-[100%] text-center max-w-4xl z-10 mb-4">
-                {title}
+              <h2
+                class="font-normal text-[26px] lg:text-[45px] leading-[100%] text-center max-w-4xl z-10 mb-4"
+                dangerouslySetInnerHTML={{ __html: title }}
+              >
               </h2>
             )}
             <div class="">

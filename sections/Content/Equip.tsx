@@ -38,8 +38,12 @@ export interface Card {
 }
 
 export interface Props {
+  /**
+   * @format html
+   */
   title?: string;
   subtitle?: string;
+  description?: string;
   cards: Card[];
   // social?: {
   //   items: SocialItem[];
@@ -96,7 +100,9 @@ function FeatureCardEquip(
   );
 }
 
-export default function FeaturesEquip({ title, cards, subtitle }: Props) {
+export default function FeaturesEquip(
+  { title, cards, subtitle, description }: Props,
+) {
   return (
     <section class="relative text-[#1a1a1a] mt-32">
       <div class="container lg:px-[5%]">
@@ -109,8 +115,10 @@ export default function FeaturesEquip({ title, cards, subtitle }: Props) {
                 </div>
                 <div class="text_link flex flex-row justify-between items-center w-full text-border relative">
                   {title && (
-                    <h2 class="font-medium text-[25px] lg:text-[38px] leading-[100%] text-center max-w-4xl z-10 mb-4 pt-[26px]">
-                      {title}
+                    <h2
+                      class="font-medium text-[25px] lg:text-[38px] leading-[100%] text-center max-w-4xl z-10 mb-4 pt-[26px]"
+                      dangerouslySetInnerHTML={{ __html: title }}
+                    >
                     </h2>
                   )}
                   <div class="relative right-2">
@@ -118,7 +126,7 @@ export default function FeaturesEquip({ title, cards, subtitle }: Props) {
                       href="/serviços"
                       class="flex flex-row gap-[6px] items-center text-[#1a1a1a] text-[15px]"
                     >
-                      Join to us
+                      {description}
                       <i class="rounded-full bg-[#0000000D] w-[40px] h-[40px] flex justify-center items-center">
                         <svg
                           width="17"

@@ -7,7 +7,13 @@ import SliderJS from "$store/islands/SliderJS.tsx";
 import { useId } from "$store/sdk/useId.ts";
 
 export interface Props {
+  /**
+   * @format html
+   */
   title?: string;
+  /**
+   * @format html
+   */
   subtitle?: string;
   posts?: Post[];
   layout?: {

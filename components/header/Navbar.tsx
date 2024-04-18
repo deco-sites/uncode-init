@@ -4,12 +4,14 @@ import { MenuButton } from "$store/islands/Header/Buttons.tsx";
 import type { SiteNavigationElement } from "apps/commerce/types.ts";
 import Image from "apps/website/components/Image.tsx";
 import NavItem from "./NavItem.tsx";
+import SideItem from "./SideItem.tsx";
 import { navbarHeight } from "./constants.ts";
 import { Buttons, Logo, secondLogo } from "$store/components/header/Header.tsx";
 
 function Navbar(
   {
     items,
+    itemsSide,
     logo,
     buttons,
     logoPosition = "left",
@@ -17,6 +19,7 @@ function Navbar(
     secondLogoPosition = "left",
   }: {
     items: SiteNavigationElement[];
+    itemsSide: SiteNavigationElement[];
     searchbar?: SearchbarProps;
     logo?: Logo;
     secondLogo?: secondLogo;
@@ -32,6 +35,11 @@ function Navbar(
         style={{ height: navbarHeight }}
         class="lg:hidden grid grid-cols-2 max-lg:flex flex-row-reverse justify-between items-center border-b border-base-200 w-full px-6 pt-6 pb-6 gap-2 group border-none relative"
       >
+        <div>
+          {/* Conteúdo da Navbar */}
+          <SideItem itemsSide={itemsSide} />
+          {/* Passe itemsSide como propriedade para SideItem */}
+        </div>
         <MenuButton />
         {logo && (
           <a
@@ -120,7 +128,7 @@ function Navbar(
           )}
         </div>
 
-        <div class="flex-none flex items-center gap-6 col-span-1 w-[fit-content] absolute right-0 h-full min-w-[90px] border-l border-[#FFFFFF33]">
+        <div class="flex-none flex items-center gap-[30px] col-span-1 w-[fit-content] absolute right-0 h-full min-w-[90px] border-l border-[#FFFFFF33]">
           <MenuButton />
         </div>
       </div>
