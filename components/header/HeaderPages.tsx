@@ -123,7 +123,7 @@ function HeaderPages({
           menu={{ items, itemsSide: itemsSides }} // Corrigindo o nome da propriedade
           platform={platform}
         >
-          <div class="bg-[#FFFFFF01] fixed w-full z-50 text-[#fff] top-0">
+          <div class="bg-[#fff] fixed w-full z-50 text-[#000] top-0">
             {alerts && alerts.length > 0 && <Alert alerts={alerts} />}
             <Navbar
               items={items}
