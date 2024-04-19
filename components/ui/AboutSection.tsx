@@ -25,7 +25,7 @@ function BannerAbout(props: Props) {
           props.link || props.imgvideo
         ? (
           <div
-            className={`container
+            className={`container lg:px-[5%] max-md:px-[10px]
             }`}
           >
             <div class="max-w-[1320px] m-[auto] flex flex-col lg:flex-row gap-2 max-sm:mx-2">
