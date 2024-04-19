@@ -35,7 +35,7 @@ function Navbar(
         style={{ height: navbarHeight }}
         class="lg:hidden grid grid-cols-2 max-lg:flex flex-row-reverse justify-between items-center border-b border-base-200 w-full px-6 pt-6 pb-6 gap-2 group border-none relative"
       >
-        <div>
+        <div class="hidden">
           <SideItem itemsSide={itemsSide} />
         </div>
         <MenuButton />
