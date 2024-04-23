@@ -19,7 +19,7 @@ export default function FooterItems(
         <>
           {/* Tablet and Desktop view */}
           <ul
-            class={`hidden md:flex flex-row gap-6 lg:gap-10  ${
+            class={`flex flex-row gap-6 lg:gap-10 max-md:order-1 ${
               justify && "lg:justify-between"
             }`}
           >
@@ -44,7 +44,7 @@ export default function FooterItems(
           </ul>
 
           {/* Mobile view */}
-          <ul class="flex flex-col md:hidden gap-4">
+          <ul class="flex-col md:hidden gap-4 hidden">
             {sections.map((section) => (
               <li>
                 <div class="collapse collapse-arrow ">

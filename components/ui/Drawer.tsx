@@ -1,7 +1,7 @@
 import { useId } from "$store/sdk/useId.ts";
 import { useSignal } from "@preact/signals";
 import { ComponentChildren } from "preact";
-import { useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 
 interface Props {
   onClose?: () => void;
@@ -23,6 +23,8 @@ function Drawer(props: Props) {
   } = props;
   const lazy = useSignal(loading === "lazy" && !open);
   const id = useId();
+  const [dragStartY, setDragStartY] = useState<number>(0);
+  const [dragging, setDragging] = useState<boolean>(false);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) =>
@@ -39,6 +41,26 @@ function Drawer(props: Props) {
     lazy.value = false;
   }, []);
 
+  const handleTouchStart = (e: TouchEvent) => {
+    setDragStartY(e.touches[0].clientY);
+    setDragging(true);
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    if (!dragging) return;
+
+    const deltaY = e.touches[0].clientY - dragStartY;
+
+    if (deltaY > 0) {
+      onClose?.();
+      setDragging(false);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setDragging(false);
+  };
+
   return (
     <div class={`drawer ${_class}`}>
       <input
@@ -53,7 +75,12 @@ function Drawer(props: Props) {
         {children}
       </div>
 
-      <aside class="drawer-side h-full z-50 overflow-hidden">
+      <aside
+        class="drawer-side h-full z-50 overflow-hidden"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <label for={id} class="drawer-overlay" />
         {!lazy.value && aside}
       </aside>

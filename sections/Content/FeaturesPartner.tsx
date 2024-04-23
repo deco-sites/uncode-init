@@ -22,6 +22,7 @@ export interface Card {
 
 export interface Props {
   title?: string;
+  subtitle?: string;
   cards: Card[];
 }
 
@@ -55,7 +56,7 @@ function FeatureCardPartner({ href, image }: Card) {
   );
 }
 
-export default function FeaturesPartner({ title, cards }: Props) {
+export default function FeaturesPartner({ title, cards, subtitle }: Props) {
   return (
     <section class="relative text-[#1a1a1a]">
       <div class="bg-[#F5F7F9] container py-[139px] pb-[139px]  max-md:py-[30px] max-md:pb-[30px] rounded-[30px] lg:px-[5%]">
@@ -74,12 +75,16 @@ export default function FeaturesPartner({ title, cards }: Props) {
               </div>
 
               <div class="top-right max-w-[550px] w-[47%] max-md:w-full">
-                <div class="text-sm text-[#fc6001] font-[500] container pb-6">
-                  <span>AGRADECIMENTOS ESPECIAIS PARA</span>
+                <div class="text-sm text-[#fc6001] font-[400] container pb-6 max-md:text-center">
+                  {subtitle && (
+                    <span>
+                      {subtitle}
+                    </span>
+                  )}
                 </div>
-                <div class="text_link flex flex-row justify-between items-center w-full">
+                <div class="text_link flex flex-row justify-between items-center w-full max-md:justify-center">
                   {title && (
-                    <h2 class="font-medium text-[25px] lg:text-[38px] leading-[100%] text-center max-w-4xl z-10 mb-4">
+                    <h2 class="font-medium text-[25px] lg:text-[38px] leading-[100%] text-center max-w-4xl z-10 mb-4  max-md:text-center">
                       {title}
                     </h2>
                   )}

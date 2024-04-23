@@ -6,7 +6,7 @@ import Alert from "./Alert.tsx";
 import Navbar from "./Navbar.tsx";
 import SideItem from "./SideItem.tsx";
 import { headerHeight } from "./constants.ts";
-
+import RegionSelector from "$store/islands/Footer/RegionSelector.tsx";
 export interface Logo {
   src: ImageWidget;
   alt: string;

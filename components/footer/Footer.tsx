@@ -9,7 +9,7 @@ import PaymentMethods from "$store/components/footer/PaymentMethods.tsx";
 // import RegionSelector from "$store/components/footer/RegionSelector.tsx";
 import Social from "$store/components/footer/Social.tsx";
 import Newsletter from "$store/islands/Newsletter.tsx";
-import RegionSelector from "$store/islands/Footer/RegionSelector.tsx";
+// import RegionSelector from "$store/islands/Footer/RegionSelector.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
 import Abouts from "$store/components/footer/About.tsx";
 import Copyright from "$store/components/footer/Copyright.tsx";
@@ -59,10 +59,10 @@ export interface MobileApps {
   android?: string;
 }
 
-export interface RegionOptions {
-  currency?: Item[];
-  language?: Item[];
-}
+// export interface RegionOptions {
+//   currency?: Item[];
+//   language?: Item[];
+// }
 
 export interface NewsletterForm {
   placeholder?: string;
@@ -91,7 +91,7 @@ export interface Layout {
     socialLinks?: boolean;
     paymentMethods?: boolean;
     mobileApps?: boolean;
-    regionOptions?: boolean;
+    // regionOptions?: boolean;
     extraLinks?: boolean;
     abouts?: boolean;
     copyright?: boolean;
@@ -120,7 +120,7 @@ export interface Props {
     items: PaymentItem[];
   };
   mobileApps?: MobileApps;
-  regionOptions?: RegionOptions;
+  // regionOptions?: RegionOptions;
   extraLinks?: {
     title?: string;
     items: ExtraLinks[];
@@ -195,7 +195,7 @@ function Footer({
     }, { label: "PhoneFoo", link: "/", text: "" }],
   },
   mobileApps = { apple: "/", android: "/" },
-  regionOptions = { currency: [], language: [] },
+  // regionOptions = { currency: [], language: [] },
   backToTheTop,
   copyright,
   layout = {
@@ -208,7 +208,7 @@ function Footer({
       socialLinks: false,
       paymentMethods: false,
       mobileApps: false,
-      regionOptions: false,
+      // regionOptions: false,
       extraLinks: false,
       abouts: false,
       copyright: false,
@@ -244,9 +244,9 @@ function Footer({
   const _apps = layout?.hide?.mobileApps
     ? <></>
     : <MobileApps content={mobileApps} />;
-  const _region = layout?.hide?.regionOptions
-    ? <></>
-    : <RegionSelector content={regionOptions} />;
+  // const _region = layout?.hide?.regionOptions
+  //   ? <></>
+  //   : <RegionSelector content={regionOptions} />;
   const _links = layout?.hide?.extraLinks ? <></> : (
     <ExtraLinks
       content={extraLinks}
@@ -270,7 +270,7 @@ function Footer({
             <div class="flex flex-col md:flex-row gap-10 md:gap-14 md:items-end justify-center">
               {/* {_payments} */}
               {_links}
-              {_region}
+              {/* {_region} */}
               <div class="flex flex-col lg:flex-row gap-10 lg:gap-14 lg:items-end">
                 {
                   /* {_apps}*/
@@ -278,7 +278,7 @@ function Footer({
               </div>
             </div>
             <Divider />
-            <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10 bg-[#FFFFFF] rounded-[30px] p-8 items-center max-sm:mb-[30px]">
+            <div class="flex flex-col-reverse max-w-[1360px] mx-auto md:flex-row md:justify-between gap-10 bg-[#FFFFFF] rounded-[30px] p-8 items-center max-sm:mb-[30px] max-md:mx-[10px]">
               {_social}
 
               {layout?.hide?.copyright
@@ -303,7 +303,7 @@ function Footer({
                 {_social}
                 {_payments}
                 {_apps}
-                {_region}
+                {/* {_region} */}
               </div>
               <div class="flex flex-col gap-10 lg:gap-20 lg:w-1/2 lg:pr-10">
                 {_newsletter}
@@ -311,7 +311,7 @@ function Footer({
               </div>
             </div>
             <Divider />
-            <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10">
+            <div class="flex flex-col-reverse max-w-[1360px] mx-auto md:flex-row md:justify-between gap-10">
               {/* <PoweredByDeco /> */}
               {_links}
             </div>
@@ -333,11 +333,11 @@ function Footer({
                   {_sectionLinks}
                   {_social}
                 </div>
-                {_region}
+                {/* {_region} */}
               </div>
             </div>
             <Divider />
-            <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10">
+            <div class="flex flex-col-reverse max-w-[1360px] mx-auto md:flex-row md:justify-between gap-10">
               {/* <PoweredByDeco /> */}
               {_links}
             </div>
@@ -359,7 +359,7 @@ function Footer({
                   </div>
                 </div>
                 <div class="flex flex-col gap-10 lg:gap-10">
-                  {_region}
+                  {/* {_region} */}
                   {_apps}
                 </div>
               </div>
@@ -385,11 +385,11 @@ function Footer({
               </div>
             </div>
             <Divider />
-            <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10 md:items-center">
+            <div class="flex flex-col-reverse max-w-[1360px] mx-auto md:flex-row md:justify-between gap-10 md:items-center">
               {/* <PoweredByDeco /> */}
               <div class="flex flex-col md:flex-row gap-10 md:items-center">
                 {_links}
-                {_region}
+                {/* {_region} */}
               </div>
             </div>
           </div>

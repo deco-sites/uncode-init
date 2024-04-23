@@ -32,7 +32,7 @@ const Aside = (
       </h1>
       {onClose && (
         <Button
-          class="w-1/3 bg-[#F5F7F9!important] text-end border-none justify-end"
+          class="w-1/3 bg-[#F5F7F9!important] text-end border-none justify-end max-md:bg-[#ffffff!important] max-md:shadow-none"
           onClick={onClose}
         >
           <Icon id="XMark" size={24} strokeWidth={2} />

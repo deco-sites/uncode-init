@@ -3,17 +3,24 @@ import Icon from "$store/components/ui/Icon.tsx";
 import { MenuButton } from "$store/islands/Header/Buttons.tsx";
 import type { SiteNavigationElement } from "apps/commerce/types.ts";
 import Image from "apps/website/components/Image.tsx";
+import type { ImageWidget } from "apps/admin/widgets.ts";
 import NavItem from "./NavItem.tsx";
 import SideItem from "./SideItem.tsx";
 import { navbarHeight } from "./constants.ts";
-import { Buttons, Logo, secondLogo } from "$store/components/header/Header.tsx";
-
+import {
+  Buttons,
+  Logo,
+  RegionOptions,
+  secondLogo,
+} from "$store/components/header/Header.tsx";
+import RegionSelector from "$store/islands/Footer/RegionSelector.tsx";
 function Navbar(
   {
     items,
     itemsSide,
     logo,
     buttons,
+    regions = {},
     logoPosition = "left",
     secondLogo,
     secondLogoPosition = "left",
@@ -24,6 +31,7 @@ function Navbar(
     logo?: Logo;
     secondLogo?: secondLogo;
     buttons?: Buttons;
+    regions?: RegionOptions;
     logoPosition?: "left" | "center";
     secondLogoPosition?: "left" | "center";
   },
@@ -33,7 +41,7 @@ function Navbar(
       {/* Mobile Version */}
       <div
         style={{ height: navbarHeight }}
-        class="lg:hidden grid grid-cols-2 max-lg:flex flex-row-reverse justify-between items-center border-b border-base-200 w-full px-6 pt-6 pb-6 gap-2 group border-none relative"
+        class="lg:hidden grid grid-cols-2 max-lg:flex flex-row justify-between items-center border-b border-base-200 w-full px-6 pt-6 pb-6 gap-2 group border-none relative"
       >
         <div class="hidden">
           <SideItem itemsSide={itemsSide} />
@@ -42,7 +50,7 @@ function Navbar(
         {logo && (
           <a
             href="/"
-            class="flex-grow inline-flex items-center justify-center max-lg:justify-start"
+            class="flex-grow inline-flex items-center justify-center max-lg:justify-center"
             style={{ minHeight: navbarHeight }}
             aria-label="Store logo"
           >
@@ -57,7 +65,7 @@ function Navbar(
         {secondLogo && (
           <a
             href="/"
-            class="flex-grow items-center justify-center hidden max-lg:justify-start"
+            class="flex-grow items-center justify-center hidden max-lg:justify-center"
             style={{ minHeight: navbarHeight }}
             aria-label="Store logo"
           >
@@ -69,6 +77,7 @@ function Navbar(
             />
           </a>
         )}
+        <RegionSelector content={regions} />
       </div>
 
       {/* Desktop Version */}
@@ -125,7 +134,7 @@ function Navbar(
             </a>
           )}
         </div>
-
+        <RegionSelector content={regions} />
         <div class="flex-none flex items-center gap-[30px] col-span-1 w-[fit-content] absolute right-0 h-full min-w-[90px] border-l border-[#FFFFFF33]">
           <MenuButton />
         </div>

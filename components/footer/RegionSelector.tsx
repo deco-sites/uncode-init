@@ -1,4 +1,5 @@
-import { useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
+import type { ImageWidget } from "apps/admin/widgets.ts";
 
 export interface Props {
   content: RegionOptions;
@@ -7,6 +8,8 @@ export interface Props {
 export type Item = {
   label: string;
   href: string;
+  src: ImageWidget;
+  alt: string;
 };
 
 export interface RegionOptions {
@@ -15,6 +18,8 @@ export interface RegionOptions {
 }
 
 export default function RegionSelectorIsland({ content }: Props) {
+  const [selectedLanguage, setSelectedLanguage] = useState<string>("");
+
   // Função para definir o cookie de idioma
   const setLanguageCookie = (languageCode: string) => {
     const uppercaseLanguageCode = languageCode.toUpperCase(); // Converter para maiúsculas
@@ -23,7 +28,7 @@ export default function RegionSelectorIsland({ content }: Props) {
 
     // Excluir cookie anterior
     const allCookies = document.cookie.split(";");
-    for (const cookie of allCookies) { // Alteração feita aqui
+    for (const cookie of allCookies) {
       const [name] = cookie.split("=");
       if (name.trim().toUpperCase() !== uppercaseLanguageCode) {
         document.cookie =
@@ -37,101 +42,99 @@ export default function RegionSelectorIsland({ content }: Props) {
   useEffect(() => {
     console.log("Component mounted");
 
-    const languageSelect = document.getElementById(
-      "language",
-    ) as HTMLDivElement;
-    if (languageSelect) {
-      const selectElements = languageSelect.querySelectorAll("select");
-      selectElements.forEach((selectElement) => {
-        selectElement.addEventListener("change", handleSelectChange);
+    // Verifica se há um idioma selecionado no cookie
+    const storedLanguage = localStorage.getItem("selectedLanguage");
+    if (storedLanguage && content.language) {
+      setSelectedLanguage(storedLanguage);
+    }
+
+    const languageDiv = document.getElementById("language") as HTMLDivElement;
+    if (languageDiv) {
+      const divElements = languageDiv.querySelectorAll("div");
+      divElements.forEach((divElement) => {
+        divElement.addEventListener("click", handleDivClick);
       });
     }
 
     return () => {
       console.log("Component unmounted");
 
-      const selectElements = languageSelect?.querySelectorAll("select");
-      if (selectElements) {
-        selectElements.forEach((selectElement) => {
-          selectElement.removeEventListener("change", handleSelectChange);
+      const divElements = languageDiv?.querySelectorAll("div");
+      if (divElements) {
+        divElements.forEach((divElement) => {
+          divElement.removeEventListener("click", handleDivClick);
         });
       }
     };
   }, []);
 
-  const handleSelectChange = (event: Event) => {
-    const target = event.target as HTMLSelectElement;
-    if (!target || !(target instanceof HTMLSelectElement)) return;
+  const handleDivClick = (event: MouseEvent) => {
+    const target = event.target as HTMLDivElement;
+    if (!target || !(target instanceof HTMLDivElement)) return;
 
-    const selectedValue = target.value;
-    const storedLanguage = localStorage.getItem("selectedLanguage");
-
-    console.log("Selected language:", selectedValue);
-    console.log("Stored language:", storedLanguage);
+    const selectedLanguage = target.textContent?.trim(); // Obtém o conteúdo textual da div como idioma selecionado
 
     // Verifica se o idioma selecionado é diferente do idioma armazenado atualmente
-    if (selectedValue.toUpperCase() !== storedLanguage?.toUpperCase()) {
+    const storedLanguage = localStorage.getItem("selectedLanguage");
+    if (
+      selectedLanguage &&
+      selectedLanguage.toUpperCase() !== storedLanguage?.toUpperCase()
+    ) {
       // Armazena o valor selecionado no localStorage
-      localStorage.setItem("selectedLanguage", selectedValue);
+      localStorage.setItem("selectedLanguage", selectedLanguage);
 
       // Define o cookie correspondente ao idioma selecionado
-      setLanguageCookie(selectedValue);
-    }
-  };
+      setLanguageCookie(selectedLanguage);
 
-  // Obtém o valor selecionado do localStorage, fornecendo um valor padrão de string vazia se o valor retornado for null
-  const selectedLanguage = typeof localStorage !== "undefined"
-    ? localStorage.getItem("selectedLanguage") ?? ""
-    : "";
-
-  // Função para obter o valor do cookie
-  const getCookie = (name: string) => {
-    const cookieString = document.cookie;
-    const cookies = cookieString.split(";");
-    for (const cookie of cookies) {
-      const [cookieName, cookieValue] = cookie.split("=");
-      if (cookieName.trim() === name) {
-        return cookieValue;
-      }
+      // Define a nova div como selecionada
+      setSelectedLanguage(selectedLanguage);
     }
-    return null;
   };
 
   return (
     <>
       {content && content.language && content.currency && (
-        <div class="flex flex-wrap gap-4 text-base-content" id="language">
+        <div
+          class="flex flex-wrap gap-4 text-base-content w-fit h-full items-center"
+          id="language"
+        >
           {content?.currency?.length > 0 && (
-            <select
+            <div
               id="currencySelect"
-              class="select select-bordered select-sm h-10 hidden"
+              class="h-10 flex items-center max-lg:hidden"
             >
               {content.currency.map((crr, index) => (
-                <option key={`currencyOption_${index}_${crr.label}`}>
+                <div
+                  key={`currencyOption_${index}_${crr.label}`}
+                  class="flex gap-4 pl-[32px] rounded-[500px] pr-[4px] py-[4px] bg-[#FFFFFF33] items-center"
+                >
                   {crr.label}
-                </option>
+                  <img
+                    class="bg-[#000000B2] p-[8px] rounded-[500px] h-[24px] w-[22px]"
+                    src={crr.src}
+                    alt={crr.alt}
+                  />
+                </div>
               ))}
-            </select>
+            </div>
           )}
           {content?.language?.length > 0 && (
-            <select
+            <div
               id="languageSelect"
-              class="select select-bordered select-sm h-10"
-              value={selectedLanguage}
-              onChange={(event) =>
-                event.target && event.target instanceof HTMLSelectElement
-                  ? setLanguageCookie(event.target.value)
-                  : null}
+              class="h-10 flex flex-row gap-[22px] items-center"
             >
               {content.language.map((lng, index) => (
-                <option
+                <div
                   key={`languageOption_${index}_${lng.label}`}
-                  value={lng.label}
+                  class={`${lng.label} cursor-pointer `}
+                  onClick={() => setLanguageCookie(lng.label)}
                 >
-                  {lng.label}
-                </option>
+                  {/* Aqui você pode adicionar a imagem e o atributo alt */}
+                  <img src={lng.src} alt={lng.alt} />
+                  <span class="hidden">{lng.label}</span>
+                </div>
               ))}
-            </select>
+            </div>
           )}
         </div>
       )}

@@ -125,7 +125,7 @@ function Projects({
 
   return (
     <div class="w-full pt-40 flex flex-col gap-6">
-      <div class="px-9 container relative">
+      <div class="lg:px-[5%] container relative max-md:px-[10px]">
         <Header
           description={subtitle}
           title={title || "Projects"}

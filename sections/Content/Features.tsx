@@ -27,7 +27,7 @@ export interface Props {
 
 function FeatureCard({ icon, title, text, href }: Card) {
   return (
-    <div class="feature-card h-full px-[30px] group group-hover:-translate-y-3 w-[auto] max-md:w-full bg-[#FFFFFF] items-start relative max-w-[318px]">
+    <div class="feature-card h-full px-[30px] group group-hover:-translate-y-3 w-[auto] max-md:w-full bg-[#FFFFFF] items-start relative max-w-[318px] max-md:max-w-full">
       {icon && (
         <div class="py-6 px-0 rounded-full bg-white text-[#1A1A1A]">
           <Icon id={icon} size={48} />
@@ -106,12 +106,12 @@ export default function Features(
 ) {
   return (
     <section class="relative text-[#1a1a1a]  max-w-screen">
-      <div class="bg-[#F5F7F9] container py-[139px] pb-[139px]  max-md:py-[30px] max-md:pb-[30px] rounded-[30px] lg:px-[5%] max-md:px-[10px]">
-        <div class="text-sm text-[#fc6001] font-[500] px-6 border-b-[1px] container pb-6">
+      <div class="bg-[#F5F7F9] container py-[139px] pb-[139px]  max-md:py-[30px] max-md:pb-[30px] rounded-[30px] lg:px-[5%] max-md:px-[23px]">
+        <div class="text-sm text-[#fc6001] font-[500] border-b-[1px] container pb-6">
           <span>{subtitle}</span>
         </div>
         <div class="container lg:mx-auto flex justify-between items-center flex-col gap-20">
-          <div class="text_link flex flex-row justify-between items-center px-6 w-full mt-6 pt-[26px]">
+          <div class="text_link flex flex-row justify-between items-center w-full mt-6 pt-[26px]">
             {title && (
               <h2
                 class="font-normal text-[26px] lg:text-[45px] leading-[100%] text-center max-w-4xl z-10 mb-4"
@@ -122,16 +122,17 @@ export default function Features(
             <div class="">
               <a
                 href="/serviços"
-                class="flex flex-row gap-[6px] items-center text-[#1a1a1a] text-[15px]"
+                class="flex flex-row gap-[6px] items-center text-[#1a1a1a] text-[15px] group btn-service"
               >
-                {description}
-                <i class="rounded-full bg-[#0000000D] w-[40px] h-[40px] flex justify-center items-center">
+                <span class="max-md:hidden">{description}</span>
+                <i class="rounded-full  group-hover:bg-transparent w-[40px] h-[40px] flex justify-center items-center">
                   <svg
                     width="17"
                     height="17"
                     viewBox="0 0 17 17"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    class="group-hover:text-gray-500"
                   >
                     <g clip-path="url(#clip0_8_4616)">
                       <path

@@ -6,7 +6,7 @@ import Alert from "./Alert.tsx";
 import Navbar from "./Navbar.tsx";
 import SideItem from "./SideItem.tsx";
 import { headerHeight } from "./constants.ts";
-
+import RegionSelector from "$store/components/footer/RegionSelector.tsx";
 export interface Logo {
   src: ImageWidget;
   alt: string;
@@ -23,6 +23,16 @@ export interface Buttons {
   hideAccountButton?: boolean;
   hideWishlistButton?: boolean;
   hideCartButton?: boolean;
+}
+export type Item = {
+  label: string;
+  href: string;
+  src: ImageWidget;
+  alt: string;
+};
+export interface RegionOptions {
+  currency?: Item[];
+  language?: Item[];
 }
 
 export interface Props {
@@ -44,7 +54,7 @@ export interface Props {
   secondLogo?: secondLogo;
   secondLogoPosition?: "left" | "center";
   // fim 2logo
-
+  regions?: RegionOptions;
   buttons?: Buttons;
 }
 
@@ -110,6 +120,7 @@ function Header({
     alt: "Logo",
   },
   secondLogoPosition = "center",
+  regions,
   buttons,
 }: Props) {
   const platform = usePlatform();
@@ -123,7 +134,7 @@ function Header({
           menu={{ items, itemsSide: itemsSides }} // Corrigindo o nome da propriedade
           platform={platform}
         >
-          <div class="bg-[#FFFFFF01] fixed w-full z-50 text-[#fff] top-0">
+          <div class="bg-[#FFFFFF01] fixed w-full z-50 text-[#fff] top-0 hover:bg-[#fff] backdrop-blur-sm">
             {alerts && alerts.length > 0 && <Alert alerts={alerts} />}
             <Navbar
               items={items}
@@ -132,6 +143,7 @@ function Header({
               logoPosition={logoPosition}
               secondLogo={secondLogo}
               secondLogoPosition={secondLogoPosition}
+              regions={regions}
               buttons={buttons}
             />
           </div>

@@ -13,6 +13,18 @@
     @apply bg-accent text-accent-content;
   }
 
+  /* aside */
+  @media screen and (max-width: 1024px) {
+    .drawer-side > *:not(.drawer-overlay){
+      transform: translateY(-100%) !important;
+    }
+    .drawer-toggle:checked ~ .drawer-side > *:not(.drawer-overlay){
+      transform: translateY(0) !important;
+    }
+  
+  }
+  
+
   /** Remove default styles from input[type=number] */
   input[type=number]::-webkit-inner-spin-button,
   input[type=number]::-webkit-outer-spin-button {
@@ -60,6 +72,11 @@
   }
   h1.text-border::after{
     top: 41px;
+  }
+  @media screen and (max-width: 768px) {
+    .text-border::after{
+      display: none !important;
+    }
   }
   .text-border::after{
     content:"";
@@ -349,7 +366,27 @@ html{
   }
   
 }
-
+a.btn-service{
+  position: relative;
+}
+a.btn-service:hover::after{
+  width: 110%;
+  border-radius: 40px;
+  background: rgba(0, 0, 0, 0.05);
+  transition: all 0.4s;
+}
+a.btn-service::after{
+  content: "";
+  background: #0000000D;
+  position: absolute;
+  height: 100%;
+  right: 0;
+  top: 0;
+  border-radius: 40px;
+  display: block;
+  width: 40px;
+  transition: all 0.4s;
+}
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -384,7 +421,7 @@ html{
 @layer components {
   .features {
     @apply flex items-center justify-center gap-6 flex-wrap;
-    @apply relative max-w-[1280px] mx-auto;
+    @apply relative w-full mx-auto;
   }
 
   .feature-card {

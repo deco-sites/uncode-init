@@ -157,7 +157,9 @@ function BlogPosts({
             {post.date}
           </p>
           <div class="flex items-center justify-between">
-            <p class="text-base font-medium pb-14 pt-2">{post.description}</p>
+            <p class="text-base font-medium pb-14 max-md:pb-[44px] pt-2">
+              {post.description}
+            </p>
             <p class="font-light text-xs">
               {post.author}
             </p>
@@ -183,7 +185,7 @@ function BlogPosts({
           layout?.showArrows ? "grid-cols-[48px_1fr_48px]" : ""
         } px-6 container`}
       >
-        <div class="flex flex-col lg:flex-row">
+        <div class="flex flex-col lg:flex-row max-md:gap-[50px]">
           {posts?.map((post) => (
             <div
               class={`w-1/3 max-lg:w-full`}

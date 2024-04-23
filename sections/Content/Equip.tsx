@@ -55,7 +55,7 @@ function FeatureCardEquip(
   { image, name, description, social }: Card,
 ) {
   return (
-    <div class="feature-card w-1/3 relative justify-center items-center group bg-[#FFFFFF] pl-0 pr-0 h-full max-[991px]:w-full">
+    <div class="feature-card w-1/3 relative justify-center items-center group bg-[#FFFFFF] pl-0 pr-0 h-full max-[991px]:w-full py-0">
       <div class="image relative rounded--[8px] group z-10 w-full">
         {image && (
           <Image
@@ -106,22 +106,22 @@ export default function FeaturesEquip(
   return (
     <section class="relative text-[#1a1a1a] mt-32">
       <div class="container lg:px-[5%]">
-        <div class="md:mx-6 container lg:mx-auto flex justify-between items-center flex-col gap-20 max-md:px-[10px]">
+        <div class="md:mx-6 container lg:mx-auto flex justify-between items-center flex-col gap-20 max-md:px-[23px]">
           <div class="features flex-col w-full gap-0 max-w-[1320px]">
             <div class="content-top flex flex-row w-full justify-between max-md:flex-col-reverse">
-              <div class="top-right w-full">
-                <div class="text-sm text-[#fc6001] font-[500] container pb-6 border-b border-[#00000024]">
+              <div class="top-right w-full max-md:mb-20">
+                <div class="text-sm text-[#fc6001] max-md:text-center max-md:pb-[16px] max-md:border-transparent font-[500] container pb-6 border-b border-[#00000024] ">
                   <span>{subtitle}</span>
                 </div>
-                <div class="text_link flex flex-row justify-between items-center w-full text-border relative">
+                <div class="text_link max-md:justify-center flex flex-row justify-between items-center w-full text-border relative">
                   {title && (
                     <h2
-                      class="font-medium text-[25px] lg:text-[38px] leading-[100%] text-center max-w-4xl z-10 mb-4 pt-[26px]"
+                      class="font-medium text-[25px] lg:text-[38px] leading-[100%] text-center max-w-4xl z-10 mb-4 pt-[26px] max-md:pt-0"
                       dangerouslySetInnerHTML={{ __html: title }}
                     >
                     </h2>
                   )}
-                  <div class="relative right-2">
+                  <div class="relative right-2 max-md:hidden">
                     <a
                       href="/serviços"
                       class="flex flex-row gap-[6px] items-center text-[#1a1a1a] text-[15px]"
@@ -158,7 +158,7 @@ export default function FeaturesEquip(
                 </div>
               </div>
             </div>
-            <div class="bottom-four flex flex-row w-full justify-between relative max-lg:flex-wrap gap-[70px] max-[991px]:justify-center">
+            <div class="bottom-four max-md:gap-5 flex flex-row w-full justify-between relative max-lg:flex-wrap gap-[70px] max-[991px]:justify-center">
               {cards?.map((card) => (
                 <FeatureCardEquip
                   {...card}
